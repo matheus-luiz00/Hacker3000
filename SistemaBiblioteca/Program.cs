@@ -26,33 +26,7 @@ namespace SistemaBiblioteca
 
             if (menuInicial() == 1) //menuInicial chama as opções e caso ela for '1 - pesquisar livro' chama a pesquisa
             {
-                Console.Clear();
-                bemVindo();
-                Console.WriteLine("\r\nMenu - Alocação de Livros");
-                separador(40);
-                Console.WriteLine("Digite o nome do livro a ser pesquisado:");
-
-                string nomeLivroEscolhido = Console.ReadLine().ToLower();
-                if (pesquisaLivroParaAlocacao(nomeLivroEscolhido))  //pesquisa o livro digitado e retorna true caso ele possa ser alocado
-                {
-                    Console.WriteLine("\nVocê deseja alocar este livro? (1) Sim | (2) Não");
-                    if(Console.ReadKey().KeyChar.ToString() == "1")
-                    {
-                        alocarLivro(nomeLivroEscolhido);
-                        Console.Clear();
-                        bemVindo();
-                        Console.WriteLine("\n !!! Livro Alocado com Sucesso !!!\n");
-                        separador(30);
-
-                    }
-                    else Console.Clear();
-                    
-                    Console.WriteLine("\nListagem de livros:");
-                    for (int i = 0; i < baseDeLivros.GetLength(0); i++)
-                    {
-                        Console.WriteLine($"Nome do Livro: {baseDeLivros[i,0]} | Disponível: {baseDeLivros[i,1]}");
-                    }
-                }
+                MenuAlocacao();
             } else
             {
                 Environment.Exit(12);
@@ -145,6 +119,40 @@ namespace SistemaBiblioteca
                 if (nomeLivro == baseDeLivros[i,0])
                 {
                     baseDeLivros[i, 1] = "Não";
+                }
+            }
+        }
+
+        /// <summary>
+        /// Método que carrega o contexto do menu 1 (Alocar livro) da tela inicial
+        /// </summary>
+        public static void MenuAlocacao()
+        {
+            Console.Clear();
+            bemVindo();
+            Console.WriteLine("\r\nMenu - Alocação de Livros");
+            separador(40);
+            Console.WriteLine("Digite o nome do livro a ser pesquisado:");
+
+            string nomeLivroEscolhido = Console.ReadLine().ToLower();
+            if (pesquisaLivroParaAlocacao(nomeLivroEscolhido))  //pesquisa o livro digitado e retorna true caso ele possa ser alocado
+            {
+                Console.WriteLine("\nVocê deseja alocar este livro? (1) Sim | (2) Não");
+                if (Console.ReadKey().KeyChar.ToString() == "1")
+                {
+                    alocarLivro(nomeLivroEscolhido);
+                    Console.Clear();
+                    bemVindo();
+                    Console.WriteLine("\n !!! Livro Alocado com Sucesso !!!\n");
+                    separador(30);
+
+                }
+                else Console.Clear();
+
+                Console.WriteLine("\nListagem de livros:");
+                for (int i = 0; i < baseDeLivros.GetLength(0); i++)
+                {
+                    Console.WriteLine($"Nome do Livro: {baseDeLivros[i, 0]} | Disponível: {baseDeLivros[i, 1]}");
                 }
             }
         }
