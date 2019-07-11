@@ -9,65 +9,65 @@ namespace AluguelCarro
 {
     class Program
     {
-        static string[,] carrosList;
-        static string carroAlocar;
+        #region Variaveis_Classe
+        //VARIAVEIS STATIC GLOBAIS
+        public static string[,] carrosList;
+        private static string carroDesejo;
+        public static int escolhaMenuInicial = 0;
+        #endregion
 
-
+        //MAIN
         static void Main(string[] args)
         {
-            bool alugou = false;
-            bancoDeDados();
-            if(bemVindo() == 1)
+
+            //VARIÁVEIS MAIN
+            bool menuBemVindo = false; // variavel de controle loop menu inicial
+            
+
+            //CODE
+            bancoDeDados(); //carrega a variavel 'carroAlocar' com um array contendo os dados dos carros
+            while (escolhaMenuInicial != 4)
             {
-                Console.Clear(); 
-                header();
-                Console.WriteLine("Digite o modelo do carro desejo:");
-                carroAlocar = Console.ReadLine().ToString().ToLower();
+                escolhaMenuInicial = bemVindo();//Get o menu que o usuário deseja entrar no Menu Inicial
 
-                while (!alugou)
+                //Entra nos menus
+                if (escolhaMenuInicial == 1) //Menu Aluguel De Carro
                 {
-                    if (pesquisarCarro(carroAlocar))
-                    {
-                        alugou = alocarCarro(carroAlocar);
-                        if (alugou == true)
-                        {
-                            Console.Clear();
-                            header();
-                            Console.WriteLine("\n * Carro alocado com sucesso *");
-                            separador(30);
-                            Console.WriteLine("Lista dos veículos:");
-                            listaCarros();
-                        }
-                    }
-                    else
-                    {
-                        alugou = menuCarroIndisponivel();
-                    }
-
+                    menuAluguelCarro();
                 }
-            }
-            else if (false)
-            {
-
-            } else //Caso o usuário queira sair no menu inicial
-            {
-                #region Sair
-                Console.Clear();
-                int cc = 0;
-                char backslash = (char) 92;
-                string[] carregandoAnim = new string[4] {"|","/","--", "\\" };
-                for (int i = 0; i < 15; i++)
+                else if (escolhaMenuInicial == 2)
                 {
-                    
-                    Console.WriteLine($"Saindo do sistema {carregandoAnim[cc]}");
-                    
-                    Thread.Sleep(100);
-                    cc++;
-                    if (cc == 4) cc = 0;
                     Console.Clear();
+                    header();
+                    Console.WriteLine("Lista dos carros");
+                    listaCarros();
                 }
-                
-                #endregion
+                else if (escolhaMenuInicial == 3)
+                {
+                    menuDevolverCarro();
+                }
+                else //Caso o usuário queira sair no menu inicial
+                {
+                    #region Sair
+                    Console.Clear();
+                    escolhaMenuInicial = 4;
+                    int cc = 0;
+                    char backslash = (char)92;
+                    string[] carregandoAnim = new string[4] { "|", "/", "--", "\\" };
+                    for (int i = 0; i < 15; i++)
+                    {
+
+                        Console.WriteLine($"Saindo do sistema {carregandoAnim[cc]}");
+
+                        Thread.Sleep(100);
+                        cc++;
+                        if (cc == 4) cc = 0;
+                        Console.Clear();
+                        
+                    }
+
+                    #endregion
+                }
             }
             var input = Console.ReadLine();
         }
@@ -90,7 +90,7 @@ namespace AluguelCarro
             header();
             Console.WriteLine("\nBem Vindo ao nosso sistema de aluguel de carros de luxo");
             separador(30);
-            Console.WriteLine("(1) Alugar veículo\n(2) Sair do Sistema");
+            Console.WriteLine("(1) Alugar veículo\n(2) Lista de carros\n(3) Devolver veículo\n(4) Sair do Sistema");
             separador(30);
             Console.WriteLine("Escolha uma opção:");
             return int.Parse(Console.ReadLine());
@@ -123,14 +123,23 @@ namespace AluguelCarro
             }
             return false;
         }
-        public static bool alocarCarro(string carroEscolhido)
+        public static bool alocarCarro(string carroEscolhido, string devolverAlocar, bool x) //true para alocar e false para desalocar
         {
-            Console.WriteLine("\nVocê deseja alocar este carro? (1) Sim (2) Não");
-            if(Console.ReadLine() == "1")
+            Console.WriteLine($"\nVocê deseja {devolverAlocar} este carro? (1) Sim (2) Não");
+            string resposta = Console.ReadLine();
+            if (resposta == "1" && x)
             {
                 for (int i = 0; i < carrosList.GetLength(0); i++)
                 {
                     if (carrosList[i, 0].ToLower().Contains(carroEscolhido.ToLower())) carrosList[i, 4] = "Indisposnível";
+                }
+                return true;
+            }
+            if (resposta == "1" && !x)
+            {
+                for (int i = 0; i < carrosList.GetLength(0); i++)
+                {
+                    if (carrosList[i, 0].ToLower().Contains(carroEscolhido.ToLower())) carrosList[i, 4] = "Disponível";
                 }
                 return true;
             }
@@ -162,9 +171,10 @@ namespace AluguelCarro
                 Console.Clear();
                 header();
                 Console.WriteLine("Digite o modelo do carro desejo:");
-                carroAlocar = Console.ReadLine().ToString().ToLower();
+                carroDesejo = Console.ReadLine().ToString().ToLower();
             }
             else
+
             {
                 int cc = 0;
                 string[] carregandoAnim = new string[4] { "|", "/", "--", "\\" };
@@ -177,10 +187,73 @@ namespace AluguelCarro
                     cc++;
                     if (cc == 3) cc = 0;
                     Console.Clear();
+                    escolhaMenuInicial = 4;
                 }
                 return true;
             }
             return false;
+        }
+
+        public static void menuAluguelCarro()
+        {
+            bool alugou = false;
+            Console.Clear();
+            header();
+            Console.WriteLine("Digite o modelo do carro de desejo:"); //Pergunta o carro desejado
+            carroDesejo = Console.ReadLine().ToString().ToLower(); //Get carro para pesquisa
+
+            while (!alugou) //Loop aluguel de carro
+            {
+                if (pesquisarCarro(carroDesejo))
+                {
+                    alugou = alocarCarro(carroDesejo, "alocar", true);
+                    if (alugou == true)
+                    {
+                        Console.Clear();
+                        header();
+                        Console.WriteLine("\n * Carro alocado com sucesso *");
+                        separador(30);
+                        Console.WriteLine("Lista dos veículos:");
+                        listaCarros();
+                        escolhaMenuInicial = 4;
+                    } else
+                    {
+                        alugou = true;
+                        Console.Clear();
+                    }
+                }
+                else
+                {
+                    alugou = menuCarroIndisponivel();
+                }
+
+            }
+        }
+
+        public static void menuDevolverCarro()
+        {
+            Console.Clear();
+            header();
+            Console.WriteLine("Lista dos carros:");
+            listaCarros();
+            separador(30);
+            Console.WriteLine("Digite o modelo do carro para devolver"); //Pergunta o carro desejado
+            carroDesejo = Console.ReadLine().ToString().ToLower(); //Get carro para pesquisa
+            if(alocarCarro(carroDesejo, "devolver", false))
+            {
+                Console.Clear();
+                header();
+                Console.WriteLine("\n * Carro devolvido com sucesso *");
+                Console.WriteLine("\nLista dos carros:");
+                listaCarros();
+                separador(30);
+                Console.WriteLine("Pressione uma tecla para continuar");
+                Console.ReadKey();
+                Console.Clear();
+            } else
+            {
+                Console.Clear();
+            }
         }
     }
     
