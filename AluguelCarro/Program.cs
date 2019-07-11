@@ -22,18 +22,20 @@ namespace AluguelCarro
 
             //VARIÁVEIS MAIN
             bool menuBemVindo = false; // variavel de controle loop menu inicial
-            
+            bool xxx = true;
 
             //CODE
             bancoDeDados(); //carrega a variavel 'carroAlocar' com um array contendo os dados dos carros
             while (escolhaMenuInicial != 4)
             {
-                escolhaMenuInicial = bemVindo();//Get o menu que o usuário deseja entrar no Menu Inicial
+
+                escolhaMenuInicial = bemVindo(xxx);//Get o menu que o usuário deseja entrar no Menu Inicial
 
                 //Entra nos menus
                 if (escolhaMenuInicial == 1) //Menu Aluguel De Carro
                 {
                     menuAluguelCarro();
+                    xxx = true;
                 }
                 else if (escolhaMenuInicial == 2)
                 {
@@ -41,10 +43,12 @@ namespace AluguelCarro
                     header();
                     Console.WriteLine("Lista dos carros");
                     listaCarros();
+                    xxx = false;
                 }
                 else if (escolhaMenuInicial == 3)
                 {
                     menuDevolverCarro();
+                    xxx = true;
                 }
                 else //Caso o usuário queira sair no menu inicial
                 {
@@ -85,9 +89,9 @@ namespace AluguelCarro
             };
         }
 
-        public static int bemVindo()
+        public static int bemVindo(bool a)
         {
-            header();
+            if(a)header();
             Console.WriteLine("\nBem Vindo ao nosso sistema de aluguel de carros de luxo");
             separador(30);
             Console.WriteLine("(1) Alugar veículo\n(2) Lista de carros\n(3) Devolver veículo\n(4) Sair do Sistema");
@@ -149,7 +153,7 @@ namespace AluguelCarro
         public static void listaCarros() {
             for (int i = 0; i < carrosList.GetLength(0); i++)
             {
-             Console.WriteLine($"Modelo: {carrosList[i, 0]} | Fab: {carrosList[i, 1]} | Ano: {carrosList[i, 2]} | Cor: {carrosList[i, 3]} | Status: {carrosList[i, 4]}");
+             Console.WriteLine($"Modelo: {carrosList[i, 0]}\t | Fab: {carrosList[i, 1]}\t | Ano: {carrosList[i, 2]}\t | Cor: {carrosList[i, 3]}\t | Status: {carrosList[i, 4]}");
             }
         }
 
@@ -208,16 +212,19 @@ namespace AluguelCarro
                 
                 if (pesquisarCarro(carroDesejo))
                 {
-                    alugou = atualizarStatusCarro(carroDesejo, "alocar", true);
+                    alugou = atualizarStatusCarro(carroDesejo, "alugar", true);
                     if (alugou == true)
                     {
                         Console.Clear();
                         header();
-                        Console.WriteLine("\n * Carro alocado com sucesso *");
+                        Console.WriteLine("\n * Veículo alugado com sucesso *");
                         separador(30);
                         Console.WriteLine("Lista dos veículos:");
                         listaCarros();
-                        escolhaMenuInicial = 4;
+                        separador(30);
+                        Console.WriteLine("Pressione uma tecla para continuar");
+                        Console.ReadKey();
+                        Console.Clear();
                     } else
                     {
                         alugou = true;
