@@ -123,7 +123,7 @@ namespace AluguelCarro
             }
             return false;
         }
-        public static bool alocarCarro(string carroEscolhido, string devolverAlocar, bool x) //true para alocar e false para desalocar
+        public static bool atualizarStatusCarro(string carroEscolhido, string devolverAlocar, bool x) //true para alocar e false para desalocar
         {
             Console.WriteLine($"\nVocê deseja {devolverAlocar} este carro? (1) Sim (2) Não");
             string resposta = Console.ReadLine();
@@ -131,7 +131,7 @@ namespace AluguelCarro
             {
                 for (int i = 0; i < carrosList.GetLength(0); i++)
                 {
-                    if (carrosList[i, 0].ToLower().Contains(carroEscolhido.ToLower())) carrosList[i, 4] = "Indisposnível";
+                    if (carrosList[i, 0].ToLower().Contains(carroEscolhido.ToLower())) carrosList[i, 4] = "Indisponível";
                 }
                 return true;
             }
@@ -155,6 +155,7 @@ namespace AluguelCarro
 
         public static bool menuCarroIndisponivel()
         {
+            
             separador(30);
             Console.WriteLine("(1) Ver a lista de carros disponíveis\n(2) Pesquisar outro modelo\n(3) Sair");
             Console.WriteLine("Digite a opção desejada:");
@@ -201,12 +202,13 @@ namespace AluguelCarro
             header();
             Console.WriteLine("Digite o modelo do carro de desejo:"); //Pergunta o carro desejado
             carroDesejo = Console.ReadLine().ToString().ToLower(); //Get carro para pesquisa
-
+            int mod_indisp = 0;
             while (!alugou) //Loop aluguel de carro
             {
+                
                 if (pesquisarCarro(carroDesejo))
                 {
-                    alugou = alocarCarro(carroDesejo, "alocar", true);
+                    alugou = atualizarStatusCarro(carroDesejo, "alocar", true);
                     if (alugou == true)
                     {
                         Console.Clear();
@@ -224,10 +226,18 @@ namespace AluguelCarro
                 }
                 else
                 {
-                    alugou = menuCarroIndisponivel();
+
+                    if (mod_indisp == 0)
+                    {
+                        separador(30);
+                        Console.WriteLine("\n!!! Não possuímos este modelo !!!\n");
+                        mod_indisp++;
+                    }
+                        alugou = menuCarroIndisponivel();
                 }
 
             }
+            mod_indisp = 0;
         }
 
         public static void menuDevolverCarro()
@@ -239,7 +249,7 @@ namespace AluguelCarro
             separador(30);
             Console.WriteLine("Digite o modelo do carro para devolver"); //Pergunta o carro desejado
             carroDesejo = Console.ReadLine().ToString().ToLower(); //Get carro para pesquisa
-            if(alocarCarro(carroDesejo, "devolver", false))
+            if(atualizarStatusCarro(carroDesejo, "devolver", false))
             {
                 Console.Clear();
                 header();
