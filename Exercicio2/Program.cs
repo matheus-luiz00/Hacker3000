@@ -8,8 +8,8 @@ namespace Exercicio2
 {
     class Program
     {
-        static string[] receita;
-        static void Main(string[] args)
+        public static string[] receita;
+        public static void Main(string[] args)
         {
             carregarDados();
             header();
