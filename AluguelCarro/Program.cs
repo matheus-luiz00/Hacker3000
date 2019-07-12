@@ -12,7 +12,6 @@ namespace AluguelCarro
         #region Variaveis_Classe
         //VARIAVEIS STATIC GLOBAIS
         public static string[,] carrosList;
-        private static string carroDesejo;
         public static int escolhaMenuInicial = 0;
         #endregion
 
@@ -22,7 +21,7 @@ namespace AluguelCarro
 
             //VARIÁVEIS MAIN
             bool menuBemVindo = false; // variavel de controle loop menu inicial
-            bool xxx = true;
+            bool xxx = true; //Variavel que mostra o header do bem vindo ou não
 
             //CODE
             bancoDeDados(); //carrega a variavel 'carroAlocar' com um array contendo os dados dos carros
@@ -114,28 +113,35 @@ namespace AluguelCarro
 
         }
 
-        public static bool pesquisarCarro(string esc)
+        /// <summary>
+        /// Retorna se o carro pesquisado existe, e caso existir se está disponível ou não
+        /// </summary>
+        /// <param name="escolha">Carro a ser pesquisado</param>
+        /// <returns>true = Disponível / false = Indisponível / null = Inexistente</returns>
+        public static bool? pesquisarExistenciaDoCarro(string escolha)
         {
             for (int i = 0; i < carrosList.GetLength(0); i++)
             {
-                if (carrosList[i,0].ToLower().Contains(esc))
+                bool testeExistencia = carrosList[i, 0].ToLower().Replace(" ", "").Contains(escolha);
+                if (testeExistencia == true)
                 {
                     Console.WriteLine($"\nModelo: {carrosList[i, 0]} | Fab: {carrosList[i,1]} | Ano: {carrosList[i, 2]} | Cor: {carrosList[i, 3]} | Status: {carrosList[i, 4]}");
-                    return carrosList[i, 4] == "Disponível";
+                    return (carrosList[i, 4] == "Disponível" ); //teste lógico
                 }
                 
             }
-            return false;
+            return null;
+
         }
-        public static bool atualizarStatusCarro(string carroEscolhido, string devolverAlocar, bool x) //true para alocar e false para desalocar
+        public static bool atualizarStatusCarro(string carroEscolhido, string devolverOuAlocar, bool x) //true para alocar e false para desalocar
         {
-            Console.WriteLine($"\nVocê deseja {devolverAlocar} este carro? (1) Sim (2) Não");
+            Console.WriteLine($"\nVocê deseja {devolverOuAlocar} este carro? (1) Sim (2) Não");
             string resposta = Console.ReadLine();
             if (resposta == "1" && x)
             {
                 for (int i = 0; i < carrosList.GetLength(0); i++)
                 {
-                    if (carrosList[i, 0].ToLower().Contains(carroEscolhido.ToLower())) carrosList[i, 4] = "Indisponível";
+                    if (carrosList[i, 0].ToLower().Replace(" ","").Contains(carroEscolhido.ToLower().Replace(" ",""))) carrosList[i, 4] = "Indisponível";
                 }
                 return true;
             }
@@ -143,7 +149,7 @@ namespace AluguelCarro
             {
                 for (int i = 0; i < carrosList.GetLength(0); i++)
                 {
-                    if (carrosList[i, 0].ToLower().Contains(carroEscolhido.ToLower())) carrosList[i, 4] = "Disponível";
+                    if (carrosList[i, 0].ToLower().Replace(" ","").Contains(carroEscolhido.ToLower().Replace(" ",""))) carrosList[i, 4] = "Disponível";
                 }
                 return true;
             }
@@ -157,11 +163,10 @@ namespace AluguelCarro
             }
         }
 
-        public static bool menuCarroIndisponivel()
+        public static bool menuCarroIndisponivel(ref string carroDesejo)
         {
-            
             separador(30);
-            Console.WriteLine("(1) Ver a lista de carros disponíveis\n(2) Pesquisar outro modelo\n(3) Sair");
+            Console.WriteLine("(1) Ver a lista de carros\n(2) Digitar outro modelo\n(3) Voltar\n(4) Sair");
             Console.WriteLine("Digite a opção desejada:");
             string verification = Console.ReadLine();
             if (verification == "1")
@@ -177,6 +182,10 @@ namespace AluguelCarro
                 header();
                 Console.WriteLine("Digite o modelo do carro desejo:");
                 carroDesejo = Console.ReadLine().ToString().ToLower();
+            }
+            else if (verification == "3")
+            {
+
             }
             else
 
@@ -205,71 +214,64 @@ namespace AluguelCarro
             Console.Clear();
             header();
             Console.WriteLine("Digite o modelo do carro de desejo:"); //Pergunta o carro desejado
-            carroDesejo = Console.ReadLine().ToString().ToLower(); //Get carro para pesquisa
-            int mod_indisp = 0;
+            string carroDesejo = Console.ReadLine().ToString().ToLower(); //Get carro para pesquisa
             while (!alugou) //Loop aluguel de carro
             {
-                
-                if (pesquisarCarro(carroDesejo))
-                {
-                    alugou = atualizarStatusCarro(carroDesejo, "alugar", true);
-                    if (alugou == true)
-                    {
-                        Console.Clear();
-                        header();
-                        Console.WriteLine("\n * Veículo alugado com sucesso *");
-                        separador(30);
-                        Console.WriteLine("Lista dos veículos:");
-                        listaCarros();
-                        separador(30);
-                        Console.WriteLine("Pressione uma tecla para continuar");
-                        Console.ReadKey();
-                        Console.Clear();
-                    } else
-                    {
-                        alugou = true;
-                        Console.Clear();
-                    }
-                }
-                else
-                {
-
-                    if (mod_indisp == 0)
-                    {
-                        separador(30);
-                        Console.WriteLine("\n!!! Não possuímos este modelo !!!\n");
-                        mod_indisp++;
-                    }
-                        alugou = menuCarroIndisponivel();
-                }
+                processadorAluguelDevolucao(ref alugou,ref carroDesejo, "alugar", "alugado", true, "indisponível");
 
             }
-            mod_indisp = 0;
         }
 
         public static void menuDevolverCarro()
         {
+            bool naoEnche = false;
             Console.Clear();
             header();
             Console.WriteLine("Lista dos carros:");
             listaCarros();
             separador(30);
             Console.WriteLine("Digite o modelo do carro para devolver"); //Pergunta o carro desejado
-            carroDesejo = Console.ReadLine().ToString().ToLower(); //Get carro para pesquisa
-            if(atualizarStatusCarro(carroDesejo, "devolver", false))
+            string carroDesejo = Console.ReadLine().ToString().Replace(" ","").ToLower(); //Get carro para pesquisa
+            processadorAluguelDevolucao(ref naoEnche, ref carroDesejo, "devolver", "devolvido", false, "disponível. Não é possível devolve-lo!" );
+            
+        }
+
+        public static void processadorAluguelDevolucao(ref bool alugou, ref string carroDesejo, string txtAlugarDevolver, string txtPassado, bool setModo, string indisp)
+        {
+            var testeAlugou = pesquisarExistenciaDoCarro(carroDesejo);
+            if (testeAlugou != null && testeAlugou == setModo)
             {
-                Console.Clear();
-                header();
-                Console.WriteLine("\n * Carro devolvido com sucesso *");
-                Console.WriteLine("\nLista dos carros:");
-                listaCarros();
+                alugou = atualizarStatusCarro(carroDesejo, txtAlugarDevolver, setModo);
+                if (alugou == true)
+                {
+                    Console.Clear();
+                    header();
+                    Console.WriteLine($"\n * Veículo {txtPassado} com sucesso *");
+                    separador(30);
+                    Console.WriteLine("Lista dos veículos:");
+                    listaCarros();
+                    separador(30);
+                    Console.WriteLine("Pressione uma tecla para continuar");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
+                else
+                {
+                    alugou = true;
+                    Console.Clear();
+                }
+            }
+            else if (testeAlugou != null && testeAlugou == !setModo)
+            {
                 separador(30);
-                Console.WriteLine("Pressione uma tecla para continuar");
-                Console.ReadKey();
-                Console.Clear();
-            } else
+                Console.WriteLine($"\n!!! Veículo {indisp} !!!\n");
+                alugou = menuCarroIndisponivel(ref carroDesejo);
+            }
+            else
             {
-                Console.Clear();
+                separador(30);
+                Console.WriteLine("\n!!! Não possuímos este modelo !!!\n");
+                alugou = menuCarroIndisponivel(ref carroDesejo);
             }
         }
     }
