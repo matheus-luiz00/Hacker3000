@@ -24,6 +24,15 @@ namespace CriacaoDeLista
             }
 
             Console.ReadLine();
+
+            for (int i = 0; i < lista.Length; i++) lista[i] = string.Empty;
+
+            foreach (var item in lista)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.ReadLine();
         }
     }
 }
