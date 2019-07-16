@@ -67,7 +67,7 @@ namespace ProjetoFinalConsole
                 var bancoCopia = banco;
                 banco = new string[(banco.GetLength(0) + 5), 5];
 
-                for (int i = 0; i < banco.GetLength(0); i++)
+                for (int i = 0; i < bancoCopia.GetLength(0); i++)
                 {
                     banco[i, 0] = bancoCopia[i, 0];
                     banco[i, 1] = bancoCopia[i, 1];
