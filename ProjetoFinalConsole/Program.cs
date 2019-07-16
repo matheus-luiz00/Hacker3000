@@ -65,7 +65,7 @@ namespace ProjetoFinalConsole
             if(bancoCheio)
             {
                 var bancoCopia = banco;
-                banco = new string[(banco.GetLength(0) + 5), 5];
+                banco = new string[(banco.GetLength(0) + 3), 5];
 
                 for (int i = 0; i < bancoCopia.GetLength(0); i++)
                 {
