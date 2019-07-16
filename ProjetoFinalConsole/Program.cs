@@ -35,7 +35,7 @@ namespace ProjetoFinalConsole
 
             ListarRegistros(banco, "True", "False");
 
-            Console.WriteLine("\n*MENU - Remover Livro");
+            Console.WriteLine("\nRemover Livro:");
             Console.WriteLine("Digite o ID do livro a ser removido: ");
             string id = Console.ReadLine();
 
@@ -47,8 +47,9 @@ namespace ProjetoFinalConsole
                     banco[i, 4] = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
                 }
             }
-            Separador(60);
+
             Console.WriteLine("\nOPERAÇÃO CONCLUÍDA");
+            Separador(60);
             Console.WriteLine("Pressione ENTER para voltar ao menu inicial");
             Console.ReadLine();
         }
