@@ -26,6 +26,9 @@ namespace TuTutuTuuuuu
 
         static void Main(string[] args)
         {
+            System.Media.SystemSounds.Question.Play();
+
+            /*
             Console.WriteLine("Digite a hora para começar: HH:mm");
             string start = Console.ReadLine();
 
@@ -75,7 +78,8 @@ namespace TuTutuTuuuuu
                 Console.Beep(c6, 930);
 
                 Thread.Sleep(500);
-            }
+                
+            }*/
         }
 
         static void Bass()
