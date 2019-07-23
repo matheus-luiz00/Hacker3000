@@ -245,7 +245,7 @@ order by SUM(vd.Quantidade) desc;
 
 select TOP 1 percent 
 		mr.Nome as 'Marca',
-		SUM(vd.Valor) 'Total'
+		SUM(vd.Quantidade * vd.Valor) 'Total'
 from Vendas	vd  inner join Carros cr on vd.Carro = cr.Id
 				inner join Marcas mr on cr.Marca = mr.Id
 group by mr.Nome
@@ -265,7 +265,7 @@ order by SUM(vd.Quantidade) desc;
 
 select TOP 1 percent 
 		cr.Modelo as 'Carro',
-		SUM(vd.Valor) 'Total'
+		SUM(vd.Quantidade * vd.Valor) 'Valor'
 from Vendas	vd  inner join Carros cr on vd.Carro = cr.Id
 				inner join Marcas mr on cr.Marca = mr.Id
 group by cr.Modelo
