@@ -15,7 +15,7 @@ namespace Calculadora
 
             float value1, value2;
 
-            
+
             /*
             Console.WriteLine("2+2");
             Console.WriteLine(calc.Somar(2, 2));
@@ -27,7 +27,92 @@ namespace Calculadora
             Console.WriteLine(calc.Dividir(2, 2));
             */
 
+            Console.WriteLine("Digite a operação no seguinte formato: [10*3] [2,5+2,5]");
+            string testt = Console.ReadLine();
 
+            
+            
+            if(testt.Contains("+"))
+            {
+                testt = testt.Replace(" ", "");
+                testt = testt.Replace(",", ".");
+                testt = testt.Replace("+", ",");
+                string[] array = testt.Split(',');
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i] = array[i].Replace(".", ",");
+                }
+                float.TryParse(array[0], out value1);
+                float.TryParse(array[1], out value2);
+                Console.WriteLine(calc.Somar(value1, value2));
+
+            }
+
+            if (testt.Contains("-"))
+            {
+                testt = testt.Replace(" ", "");
+                testt = testt.Replace(",", ".");
+                testt = testt.Replace("-", ",");
+                string[] array = testt.Split(',');
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i] = array[i].Replace(".", ",");
+                }
+                float.TryParse(array[0], out value1);
+                float.TryParse(array[1], out value2);
+                Console.WriteLine(calc.Diminuir(value1, value2));
+
+            }
+
+            if (testt.Contains("*"))
+            {
+                testt = testt.Replace(" ", "");
+                testt = testt.Replace(",", ".");
+                testt = testt.Replace("*", ",");
+                string[] array = testt.Split(',');
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i] = array[i].Replace(".", ",");
+                }
+                float.TryParse(array[0], out value1);
+                float.TryParse(array[1], out value2);
+                Console.WriteLine(calc.Multiplicar(value1, value2));
+
+            }
+
+            if (testt.Contains("/"))
+            {
+                testt = testt.Replace(" ", "");
+                testt = testt.Replace(",", ".");
+                testt = testt.Replace("/", ",");
+                string[] array = testt.Split(',');
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i] = array[i].Replace(".", ",");
+                }
+                float.TryParse(array[0], out value1);
+                float.TryParse(array[1], out value2);
+                Console.WriteLine(calc.Dividir(value1, value2));
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            /*
             Console.WriteLine("Soma:");
             Console.WriteLine("Digite um valor:");
             float.TryParse(Console.ReadLine(), out value1);
@@ -59,7 +144,7 @@ namespace Calculadora
             Console.WriteLine("Digite um segundo valor:");
             float.TryParse(Console.ReadLine(), out value2);
             Console.WriteLine(calc.Dividir(value1, value2));
-
+            */
             Console.ReadKey();
         }
     }
