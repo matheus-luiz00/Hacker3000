@@ -12,7 +12,6 @@ namespace BoletimPOO
         static void Main(string[] args)
         {
             Alunos alu = new Alunos();
-            float media, freq;
             int escolha = -1;
 
 
@@ -53,10 +52,7 @@ namespace BoletimPOO
 
             }
             
-            
 
-
-            Console.ReadKey();
         }
 
         static void MenuAlterarAluno(Alunos al)
@@ -68,10 +64,13 @@ namespace BoletimPOO
                 bol.CalcFreq(PerguntaFloat("o Total de AULAS"), PerguntaFloat("o Total de FALTAS")));
 
             Console.WriteLine("Operação Concluída");
+            Console.WriteLine("\nPressione ENTER para voltar ao menu principal");
             Console.ReadKey();
         }
         static void MenuExcluir(Alunos al)
         {
+            al.ListarAlunos();
+            Console.WriteLine("--------------------------------------------");
             Console.WriteLine("Informe o id do aluno a ser excluido");
             int.TryParse(Console.ReadLine(), out int aute);
             if(al.ExcluirAluno(aute))
@@ -79,12 +78,16 @@ namespace BoletimPOO
                 Console.WriteLine("Aluno Exluído com sucesso");
             } else Console.WriteLine("Aluno já não existe");
 
-            Console.ReadKey();
+            Console.WriteLine("\nPressione ENTER para voltar ao menu principal");
+            Console.ReadLine();
         }
 
         static void MenuExibir(Alunos al)
         {
             al.ListarAlunos();
+            Console.WriteLine("--------------------------------------------");
+            Console.WriteLine("\nPressione ENTER para voltar ao menu principal");
+            Console.ReadLine();
         }
 
         static void MenuInserirAluno(Alunos al)

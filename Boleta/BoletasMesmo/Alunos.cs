@@ -40,6 +40,7 @@ namespace Boleta.BoletasMesmo
             Console.WriteLine(" ID |       NOME      |  SITUAÇÃO  |  MÉDIA | FREQUÊNCIA");
             for (int id = 0; id < alunos.GetLength(0); id++)
             {
+                if (alunos[id] == "-1") continue;
                 Console.WriteLine(string.Format("{4,3} | {0,15} | {1,10} | {2,6:0.00} | {3}", alunos[id], situacao[id], notas[id], frequencias[id], id));
             }
         }
