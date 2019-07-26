@@ -18,6 +18,11 @@ namespace CalculadoraBiblio
             return ((baseT * altura) / 2);
         }
 
+        public double RaioCirculoArea(double area)
+        {
+            return Math.Sqrt((area / Math.PI));
+        }
+
         public double RaioCirculoCircunferencia(double circunferencia)
         {
             return (circunferencia / (2 * Math.PI));
