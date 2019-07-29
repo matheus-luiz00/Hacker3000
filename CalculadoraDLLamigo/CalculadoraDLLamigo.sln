@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculadoraDLLamigo", "CalculadoraDLLamigo.csproj", "{F4F0B301-83BA-422A-8722-A442B29B392C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4F0B301-83BA-422A-8722-A442B29B392C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4F0B301-83BA-422A-8722-A442B29B392C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4F0B301-83BA-422A-8722-A442B29B392C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4F0B301-83BA-422A-8722-A442B29B392C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DBECE9FA-BB91-42FB-9704-98A194966D6A}
+	EndGlobalSection
+EndGlobal
