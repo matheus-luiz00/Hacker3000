@@ -19,6 +19,7 @@ namespace Listar_meus_carros
                 if (opcaoMenuPrincipal == 1)
                 {
                     Console.Clear();
+                    MostrarSejaBemVindo();
                     veiculos.Add(new Veiculo()
                     {
                         Modelo = PerguntarParaAdd("modelo"),
@@ -33,6 +34,7 @@ namespace Listar_meus_carros
                 if (opcaoMenuPrincipal == 2)
                 {
                     Console.Clear();
+                    MostrarSejaBemVindo();
                     foreach (var item in veiculos)
                     {
                         Console.WriteLine($"{item.Modelo} | {item.Ano} | {item.Placa} | {item.Cavalos}");
