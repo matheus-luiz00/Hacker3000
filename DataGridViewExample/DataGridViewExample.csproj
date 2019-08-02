@@ -46,6 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adicionar\frmAdicionarCarro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adicionar\frmAdicionarCarro.Designer.cs">
+      <DependentUpon>frmAdicionarCarro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Adicionar\frmAdicionarMarcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adicionar\frmAdicionarMarcas.Designer.cs">
+      <DependentUpon>frmAdicionarMarcas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Adicionar\frmAdicionarUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adicionar\frmAdicionarUsuarios.Designer.cs">
+      <DependentUpon>frmAdicionarUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Adicionar\frmAdicionarVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adicionar\frmAdicionarVendas.Designer.cs">
+      <DependentUpon>frmAdicionarVendas.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseGiomarDataSet1.cs">
       <DependentUpon>DatabaseGiomarDataSet1.xsd</DependentUpon>
     </Compile>
@@ -53,6 +77,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseGiomarDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Edicao\frmEdicaoDeCarros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edicao\frmEdicaoDeCarros.Designer.cs">
+      <DependentUpon>frmEdicaoDeCarros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edicao\frmEdicaoUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edicao\frmEdicaoUsuarios.Designer.cs">
+      <DependentUpon>frmEdicaoUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edicao\frmEditarVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edicao\frmEditarVendas.Designer.cs">
+      <DependentUpon>frmEditarVendas.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -78,14 +120,48 @@
     <Compile Include="FormVendas.Designer.cs">
       <DependentUpon>FormVendas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Edicao\frmEditarMarcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edicao\frmEditarMarcas.Designer.cs">
+      <DependentUpon>frmEditarMarcas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lixeira.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Lixeira.Designer.cs">
       <DependentUpon>Lixeira.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Carros.cs" />
+    <Compile Include="Model\Marcas.cs" />
+    <Compile Include="Model\Usuarios.cs" />
+    <Compile Include="Model\Vendas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Adicionar\frmAdicionarCarro.resx">
+      <DependentUpon>frmAdicionarCarro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adicionar\frmAdicionarMarcas.resx">
+      <DependentUpon>frmAdicionarMarcas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adicionar\frmAdicionarUsuarios.resx">
+      <DependentUpon>frmAdicionarUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adicionar\frmAdicionarVendas.resx">
+      <DependentUpon>frmAdicionarVendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edicao\frmEdicaoDeCarros.resx">
+      <DependentUpon>frmEdicaoDeCarros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edicao\frmEdicaoUsuarios.resx">
+      <DependentUpon>frmEdicaoUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edicao\frmEditarMarcas.resx">
+      <DependentUpon>frmEditarMarcas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edicao\frmEditarVendas.resx">
+      <DependentUpon>frmEditarVendas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

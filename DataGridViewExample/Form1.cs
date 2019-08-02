@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataGridViewExample.Adicionar;
+using DataGridViewExample.Edicao;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -55,6 +57,13 @@ namespace DataGridViewExample
                     {
                         this.carrosTableAdapter.DeleteQuery(carSelect.Id);
                         break; }
+                case 1:
+                    {
+                        frmEdicaoDeCarros editCarros = new frmEdicaoDeCarros();
+                        editCarros.CarrosRow = carSelect;
+                        editCarros.ShowDialog();
+                        break;
+                    }
 
             }
             this.carrosTableAdapter.CustomQuery(databaseGiomarDataSet1.Carros);
@@ -70,6 +79,41 @@ namespace DataGridViewExample
 
             this.carrosTableAdapter.CustomQuery(databaseGiomarDataSet1.Carros);
 
+        }
+
+        private void FillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.carrosTableAdapter.FillBy(this.databaseGiomarDataSet1.Carros);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            frmAdicionarCarro addCarro = new frmAdicionarCarro();
+            //addCarro.carrosRow;
+            addCarro.ShowDialog();
+
+            if (!string.IsNullOrEmpty(addCarro.carrosRow?.Modelo))
+            {
+                this.carrosTableAdapter.Insert(
+                    addCarro.carrosRow.Modelo,
+                    addCarro.carrosRow.Ano,
+                    addCarro.carrosRow.Marca,
+                    true,
+                    1,
+                    1,
+                    DateTime.Now,
+                    DateTime.Now
+                    );
+            }
+            this.carrosTableAdapter.Fill(this.databaseGiomarDataSet1.Carros);
         }
     }
 }

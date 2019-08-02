@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataGridViewExample.Adicionar;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,9 +37,32 @@ namespace DataGridViewExample
                         this.marcasTableAdapter.DeleteQuery(marcasSelect.Id);
                         break;
                     }
+                case 1:
+                    {
+
+                        frmEditarMarcas edicao = new frmEditarMarcas();
+                        edicao.marcasRow = marcasSelect;
+                        edicao.ShowDialog();
+                        break;
+                    }
             }
 
             this.marcasTableAdapter.CustomQuerry(databaseGiomarDataSet1.Marcas);
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            frmAdicionarMarcas addMarca = new frmAdicionarMarcas();
+
+            addMarca.ShowDialog();
+
+            if (!string.IsNullOrEmpty(addMarca.marcasRow?.Nome))
+            {
+                marcasTableAdapter.Insert(addMarca.marcasRow.Nome,
+                    true, 1, 1, DateTime.Now, DateTime.Now);
+            }
+            this.marcasTableAdapter.CustomQuerry(this.databaseGiomarDataSet1.Marcas);
+            
         }
     }
 }

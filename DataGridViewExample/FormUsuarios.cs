@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataGridViewExample.Adicionar;
+using DataGridViewExample.Edicao;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,9 +38,35 @@ namespace DataGridViewExample
                         this.usuariosTableAdapter.DeleteQuery(usuariosSelect.Id);
                         break;
                     }
+                case 1:
+                    {
+                        frmEdicaoUsuarios edicaoUsuarios = new frmEdicaoUsuarios();
+                        edicaoUsuarios.usuariosRow = usuariosSelect;
+                        edicaoUsuarios.ShowDialog();
+
+                        break;
+                    }
             }
 
             this.usuariosTableAdapter.CustomQuery(databaseGiomarDataSet1.Usuarios);
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            frmAdicionarUsuarios addUsuario = new frmAdicionarUsuarios();
+            addUsuario.ShowDialog();
+
+            if(!string.IsNullOrEmpty(addUsuario.usuarioBanco?.Usuario))
+            this.usuariosTableAdapter.Insert(
+                addUsuario.usuarioBanco.Usuario,
+                addUsuario.usuarioBanco.Ativo,
+                1,
+                1,
+                addUsuario.usuarioBanco.DatInc,
+                addUsuario.usuarioBanco.DatAlt
+                );
+
+            this.usuariosTableAdapter.CustomQuery(this.databaseGiomarDataSet1.Usuarios);
         }
     }
 }

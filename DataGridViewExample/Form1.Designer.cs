@@ -32,6 +32,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.deletColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.editColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modeloDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.anoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,16 +42,21 @@
             this.usuAltDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datIncDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datAltDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.carrosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.deletColumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.carrosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseGiomarDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.databaseGiomarDataSet1 = new DataGridViewExample.DatabaseGiomarDataSet1();
+            this.carrosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.carrosTableAdapter = new DataGridViewExample.DatabaseGiomarDataSet1TableAdapters.CarrosTableAdapter();
             this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carrosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carrosBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseGiomarDataSet1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseGiomarDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carrosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -61,6 +67,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Adicionar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // dataGridView1
             // 
@@ -70,6 +77,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.deletColumn,
+            this.editColumn,
             this.idDataGridViewTextBoxColumn,
             this.modeloDataGridViewTextBoxColumn,
             this.anoDataGridViewTextBoxColumn,
@@ -78,14 +86,15 @@
             this.usuIncDataGridViewTextBoxColumn,
             this.usuAltDataGridViewTextBoxColumn,
             this.datIncDataGridViewTextBoxColumn,
-            this.datAltDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.carrosBindingSource;
+            this.datAltDataGridViewTextBoxColumn,
+            this.deletColumnDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.carrosBindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(12, 68);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 370);
+            this.dataGridView1.Size = new System.Drawing.Size(1020, 370);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
@@ -99,6 +108,16 @@
             this.deletColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.deletColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.deletColumn.Width = 125;
+            // 
+            // editColumn
+            // 
+            this.editColumn.DataPropertyName = "Id";
+            this.editColumn.HeaderText = "Editar";
+            this.editColumn.MinimumWidth = 6;
+            this.editColumn.Name = "editColumn";
+            this.editColumn.ReadOnly = true;
+            this.editColumn.UseColumnTextForButtonValue = true;
+            this.editColumn.Width = 125;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -181,15 +200,34 @@
             this.datAltDataGridViewTextBoxColumn.ReadOnly = true;
             this.datAltDataGridViewTextBoxColumn.Width = 125;
             // 
-            // carrosBindingSource
+            // deletColumnDataGridViewTextBoxColumn
             // 
-            this.carrosBindingSource.DataMember = "Carros";
-            this.carrosBindingSource.DataSource = this.databaseGiomarDataSet1;
+            this.deletColumnDataGridViewTextBoxColumn.DataPropertyName = "deletColumn";
+            this.deletColumnDataGridViewTextBoxColumn.HeaderText = "deletColumn";
+            this.deletColumnDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.deletColumnDataGridViewTextBoxColumn.Name = "deletColumnDataGridViewTextBoxColumn";
+            this.deletColumnDataGridViewTextBoxColumn.ReadOnly = true;
+            this.deletColumnDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // carrosBindingSource1
+            // 
+            this.carrosBindingSource1.DataMember = "Carros";
+            this.carrosBindingSource1.DataSource = this.databaseGiomarDataSet1BindingSource;
+            // 
+            // databaseGiomarDataSet1BindingSource
+            // 
+            this.databaseGiomarDataSet1BindingSource.DataSource = this.databaseGiomarDataSet1;
+            this.databaseGiomarDataSet1BindingSource.Position = 0;
             // 
             // databaseGiomarDataSet1
             // 
             this.databaseGiomarDataSet1.DataSetName = "DatabaseGiomarDataSet1";
             this.databaseGiomarDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // carrosBindingSource
+            // 
+            this.carrosBindingSource.DataMember = "Carros";
+            this.carrosBindingSource.DataSource = this.databaseGiomarDataSet1;
             // 
             // button2
             // 
@@ -228,7 +266,7 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.SystemColors.Highlight;
-            this.button5.Location = new System.Drawing.Point(683, 12);
+            this.button5.Location = new System.Drawing.Point(927, 12);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(105, 50);
             this.button5.TabIndex = 5;
@@ -240,19 +278,22 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1052, 458);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carrosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carrosBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseGiomarDataSet1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseGiomarDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carrosBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -267,7 +308,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.DataGridViewButtonColumn deletColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn editColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn modeloDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn anoDataGridViewTextBoxColumn;
@@ -277,6 +320,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn usuAltDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datIncDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn datAltDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deletColumnDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource databaseGiomarDataSet1BindingSource;
+        private System.Windows.Forms.BindingSource carrosBindingSource1;
     }
 }

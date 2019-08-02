@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataGridViewExample.Adicionar;
+using DataGridViewExample.Edicao;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,10 +44,36 @@ namespace DataGridViewExample
                         this.vendasTableAdapter.DeleteQuery(vendasSelect.Id);
                         break;
                     }
+                case 1:
+                    {
+                        frmEditarVendas editar = new frmEditarVendas();
+                        editar.vendasRow = vendasSelect;
+                        editar.ShowDialog();
+                        break;
+                    }
             }
 
             this.vendasTableAdapter.CustomQuerry(databaseGiomarDataSet1.Vendas);
 
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            frmAdicionarVendas addVendas = new frmAdicionarVendas();
+            addVendas.ShowDialog();
+
+            if(addVendas.vendasClass.Carro > -1)
+            this.vendasTableAdapter.Insert(
+                addVendas.vendasClass.Carro,
+                addVendas.vendasClass.Quantidade,
+                addVendas.vendasClass.Valor,
+                addVendas.vendasClass.Ativo,
+                1,
+                1,
+                addVendas.vendasClass.DatInc,
+                addVendas.vendasClass.DatAlt);
+
+            this.vendasTableAdapter.CustomQuerry(this.databaseGiomarDataSet1.Vendas);
         }
     }
 }

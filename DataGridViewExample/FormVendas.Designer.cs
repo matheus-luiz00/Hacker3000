@@ -35,6 +35,7 @@
             this.vendasTableAdapter = new DataGridViewExample.DatabaseGiomarDataSet1TableAdapters.VendasTableAdapter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.deletColumnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.carroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +58,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Adicionar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // vendasBindingSource
             // 
@@ -80,6 +82,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.deletColumnDataGridViewTextBoxColumn,
+            this.editColumn,
             this.idDataGridViewTextBoxColumn,
             this.carroDataGridViewTextBoxColumn,
             this.quantidadeDataGridViewTextBoxColumn,
@@ -107,6 +110,16 @@
             this.deletColumnDataGridViewTextBoxColumn.Name = "deletColumnDataGridViewTextBoxColumn";
             this.deletColumnDataGridViewTextBoxColumn.ReadOnly = true;
             this.deletColumnDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // editColumn
+            // 
+            this.editColumn.DataPropertyName = "Id";
+            this.editColumn.HeaderText = "Editar";
+            this.editColumn.MinimumWidth = 6;
+            this.editColumn.Name = "editColumn";
+            this.editColumn.ReadOnly = true;
+            this.editColumn.UseColumnTextForButtonValue = true;
+            this.editColumn.Width = 125;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -214,6 +227,7 @@
         private DatabaseGiomarDataSet1TableAdapters.VendasTableAdapter vendasTableAdapter;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn deletColumnDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn editColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn carroDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantidadeDataGridViewTextBoxColumn;
