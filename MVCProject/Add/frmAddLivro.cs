@@ -28,6 +28,8 @@ namespace MVCProject.Add
             add.Isbn = txtIsbn.Text;
             add.Sinopse = txtSinopse.Text;
             add.Observacoes = txtObs.Text;
+            add.UsuAlt = Session.usu.Id;
+            add.UsuInc = Session.usu.Id;
 
             livrosTableAdapter1.Insert(
                 add.Registro,
@@ -37,11 +39,12 @@ namespace MVCProject.Add
                 add.Editora,
                 add.Sinopse,
                 add.Observacoes,
-                1,
-                1,
+                add.UsuInc,
+                add.UsuAlt,
                 add.DatInc,
                 add.DatAlt
                 );
+            this.Close();
         }
 
         private void FrmAddLivro_Load(object sender, EventArgs e)

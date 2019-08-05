@@ -30,14 +30,20 @@ namespace MVCProject.View
         {
             frmAddAutores frmAdd = new frmAddAutores();
             frmAdd.ShowDialog();
+            this.autoresTableAdapter.Fill(this.sistemaBibliotecaDBDataSet.Autores);
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            if (colunaSelecionada != null)
+            {
             frmEditarAutores editar = new frmEditarAutores();
             editar.edicao = colunaSelecionada;
             editar.ShowDialog();
             this.autoresTableAdapter.Fill(this.sistemaBibliotecaDBDataSet.Autores);
+            }
+            else
+                MessageBox.Show("Selecione um registro para alterar");
         }
 
         MVCProject.SistemaBibliotecaDBDataSet.AutoresRow colunaSelecionada;
@@ -70,7 +76,8 @@ namespace MVCProject.View
 
         private void DataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            colunaSelecionada = ((System.Data.DataRowView)this.dataGridView1.Rows[e.RowIndex].DataBoundItem).Row
+            if (!(e.RowIndex == -1))
+                colunaSelecionada = ((System.Data.DataRowView)this.dataGridView1.Rows[e.RowIndex].DataBoundItem).Row
                 as MVCProject.SistemaBibliotecaDBDataSet.AutoresRow;
         }
     }

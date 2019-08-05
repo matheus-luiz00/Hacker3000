@@ -30,20 +30,27 @@ namespace MVCProject.View
         {
             frmAddLivro frmAdd = new frmAddLivro();
             frmAdd.ShowDialog();
+            this.livrosTableAdapter.Fill(this.sistemaBibliotecaDBDataSet.Livros);
         }
         MVCProject.SistemaBibliotecaDBDataSet.LivrosRow rowSelecionada;
         private void DataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            rowSelecionada = ((System.Data.DataRowView)this.dataGridView1.Rows[e.RowIndex].DataBoundItem).Row
+            if (!(e.RowIndex == -1))
+                rowSelecionada = ((System.Data.DataRowView)this.dataGridView1.Rows[e.RowIndex].DataBoundItem).Row
                 as MVCProject.SistemaBibliotecaDBDataSet.LivrosRow;
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            if (rowSelecionada != null)
+            {
             frmEditarLivros telaEditar = new frmEditarLivros();
             telaEditar.livrosRow = rowSelecionada;
             telaEditar.ShowDialog();
             this.livrosTableAdapter.Fill(this.sistemaBibliotecaDBDataSet.Livros);
+            }
+            else
+                MessageBox.Show("Selecione um registro para alterar");
         }
     }
 }

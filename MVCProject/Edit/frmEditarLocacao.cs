@@ -43,7 +43,7 @@ namespace MVCProject.Edit
             editar.Usuario = (int)cboxUsuario.SelectedValue;
             editar.Devolucao = dateTimePicker1.Value;
             editar.DatAlt = DateTime.Now;
-            editar.UsuAlt = 1;
+            editar.UsuAlt = Session.usu.Id;
 
             locacaoTableAdapter1.UpdateQuery(
                 editar.Livro,

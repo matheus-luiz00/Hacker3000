@@ -21,21 +21,27 @@ namespace MVCProject.Edit
 
         private void FrmEditarUsuarios_Load(object sender, EventArgs e)
         {
-            textBox1.Text = usuariosRow.Nome;
-            textBox2.Text = usuariosRow.Login;
-            textBox3.Text = usuariosRow.Senha;
-            textBox4.Text = usuariosRow.Email;
+            txtNome.Text = usuariosRow.Nome;
+            txtLogin.Text = usuariosRow.Login;
+            txtEmail.Text = usuariosRow.Email;
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            Crypto senhaToHash = new Crypto();
             Usuario editar = new Usuario();
             editar.Id = usuariosRow.Id;
-            editar.Nome = textBox1.Text;
-            editar.Login = textBox2.Text;
-            editar.Senha = textBox3.Text;
-            editar.Email = textBox4.Text;
-            editar.UsuAlt = 1;
+            editar.Nome = txtNome.Text;
+            editar.Login = txtLogin.Text;
+
+
+            if (usuariosRow.Senha != txtSenha.Text)
+                editar.Senha = senhaToHash.HashQueRetornaString(txtSenha.Text);
+            else
+                editar.Senha = usuariosRow.Senha;
+
+            editar.Email = txtEmail.Text;
+            editar.UsuAlt = Session.usu.Id;
             editar.DatAlt = DateTime.Now;
 
             usuariosTableAdapter1.UpdateQuery(

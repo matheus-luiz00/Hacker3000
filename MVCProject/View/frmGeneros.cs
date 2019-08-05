@@ -30,23 +30,29 @@ namespace MVCProject.View
         {
             frmAddGenero frmAdd = new frmAddGenero();
             frmAdd.ShowDialog();
+            this.generosTableAdapter.Fill(this.sistemaBibliotecaDBDataSet.Generos);
         }
 
         MVCProject.SistemaBibliotecaDBDataSet.GenerosRow rowSelecionada;
 
         private void DataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if(!(e.RowIndex == -1))
             rowSelecionada = ((System.Data.DataRowView)this.dataGridView1.Rows[e.RowIndex].DataBoundItem).Row
                 as MVCProject.SistemaBibliotecaDBDataSet.GenerosRow;
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            if (rowSelecionada != null)
+            {
             frmEditarGeneros telaEditar = new frmEditarGeneros();
             telaEditar.generosRow = rowSelecionada;
             telaEditar.ShowDialog();
             this.generosTableAdapter.Fill(this.sistemaBibliotecaDBDataSet.Generos);
-
+            }
+            else
+                MessageBox.Show("Selecione um registro para alterar");
 
         }
     }

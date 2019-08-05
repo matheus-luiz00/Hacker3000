@@ -20,11 +20,15 @@ namespace MVCProject.Add
 
         private void BtnAdicionar_Click(object sender, EventArgs e)
         {
+            Crypto toCrypto = new Crypto();
             Usuario add = new Usuario();
             add.Nome = textBox2.Text;
             add.Login = textBox1.Text;
-            add.Senha = textBox3.Text;
+            add.Senha = toCrypto.HashQueRetornaString(textBox3.Text);
             add.Email = textBox4.Text;
+            add.Salt = toCrypto.SaltQueRetornaString();
+            add.UsuAlt = Session.usu.Id;
+            add.UsuInc = Session.usu.Id;
 
             usuariosTableAdapter1.Insert(
                 add.Nome,
@@ -35,7 +39,8 @@ namespace MVCProject.Add
                 add.UsuInc,
                 add.UsuAlt,
                 add.DatInc,
-                add.DatAlt
+                add.DatAlt,
+                add.Salt
                 );
 
             this.Close();

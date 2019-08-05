@@ -47,6 +47,7 @@ namespace MVCProject.Edit
             editar.Editora =(int) cboxEditora.SelectedValue;
             editar.Genero = (int)cboxGenero.SelectedValue;
             editar.DatAlt = DateTime.Now;
+            editar.UsuAlt = Session.usu.Id;
 
             livrosTableAdapter1.UpdateQuery(
                 editar.Registro,
@@ -56,7 +57,7 @@ namespace MVCProject.Edit
                 editar.Editora ,
                 editar.Sinopse,
                 editar.Observacoes,
-                1,
+                editar.UsuAlt,
                 editar.DatAlt,
                 editar.Id
                 );

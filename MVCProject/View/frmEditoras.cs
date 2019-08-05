@@ -30,13 +30,15 @@ namespace MVCProject.View
         {
             frmAddEditoras frmAdd = new frmAddEditoras();
             frmAdd.ShowDialog();
+            this.editorasTableAdapter.Fill(this.sistemaBibliotecaDBDataSet.Editoras);
         }
 
         MVCProject.SistemaBibliotecaDBDataSet.EditorasRow colunaSelecionada;
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            colunaSelecionada = ((System.Data.DataRowView)this.dataGridView1.Rows[e.RowIndex].DataBoundItem).Row
+            if (!(e.RowIndex == -1))
+                colunaSelecionada = ((System.Data.DataRowView)this.dataGridView1.Rows[e.RowIndex].DataBoundItem).Row
                 as MVCProject.SistemaBibliotecaDBDataSet.EditorasRow;
 
            
@@ -44,15 +46,21 @@ namespace MVCProject.View
 
         private void DataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            colunaSelecionada = ((System.Data.DataRowView)this.dataGridView1.Rows[e.RowIndex].DataBoundItem).Row
+            if (!(e.RowIndex == -1))
+                colunaSelecionada = ((System.Data.DataRowView)this.dataGridView1.Rows[e.RowIndex].DataBoundItem).Row
                 as MVCProject.SistemaBibliotecaDBDataSet.EditorasRow;
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            if (colunaSelecionada != null)
+            {
             frmEditarEditoras editar = new frmEditarEditoras();
             editar.edicao = colunaSelecionada;
             editar.ShowDialog();
+            }
+            else
+                MessageBox.Show("Selecione um registro para alterar");
         }
     }
 }

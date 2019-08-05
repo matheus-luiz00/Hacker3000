@@ -30,13 +30,15 @@ namespace MVCProject.View
         {
             frmAddLivroAutor frmAdd = new frmAddLivroAutor();
             frmAdd.ShowDialog();
+            this.dataTable1TableAdapter.Fill(this.sistemaBibliotecaDBDataSet.DataTable1);
         }
 
         MVCProject.SistemaBibliotecaDBDataSet.DataTable1Row rowSelecionada;
 
         private void DataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            rowSelecionada = ((System.Data.DataRowView)this.dataGridView1.Rows[e.RowIndex].DataBoundItem).Row
+            if (!(e.RowIndex == -1))
+                rowSelecionada = ((System.Data.DataRowView)this.dataGridView1.Rows[e.RowIndex].DataBoundItem).Row
                 as MVCProject.SistemaBibliotecaDBDataSet.DataTable1Row;
         }
 

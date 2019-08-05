@@ -12,10 +12,13 @@ namespace MVCProject.View
 {
     public partial class frmPrincipal : Form
     {
+
         public frmPrincipal()
         {
             if (Login.TelaLogin())
                 InitializeComponent();
+            else
+                Application.Exit();
         }
 
         private void UsuáriosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,6 +55,10 @@ namespace MVCProject.View
         {
             frmEditoras telaEditoras = new frmEditoras();
             telaEditoras.ShowDialog();
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
         }
     }
 }

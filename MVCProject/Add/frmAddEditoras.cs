@@ -29,6 +29,7 @@ namespace MVCProject.Add
                 add.Nome,
                 add.Descricao
                 );
+            this.Close();
         }
     }
 }

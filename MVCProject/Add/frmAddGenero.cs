@@ -30,6 +30,7 @@ namespace MVCProject.Add
                     add.Tipo,
                     add.Descricao
                     );
+
                 this.Close();
             }
         }
