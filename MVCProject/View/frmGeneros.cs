@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MVCProject.Add;
+using MVCProject.Edit;
 
 namespace MVCProject.View
 {
@@ -21,6 +23,30 @@ namespace MVCProject.View
         {
             // TODO: This line of code loads data into the 'sistemaBibliotecaDBDataSet.Generos' table. You can move, or remove it, as needed.
             this.generosTableAdapter.Fill(this.sistemaBibliotecaDBDataSet.Generos);
+
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            frmAddGenero frmAdd = new frmAddGenero();
+            frmAdd.ShowDialog();
+        }
+
+        MVCProject.SistemaBibliotecaDBDataSet.GenerosRow rowSelecionada;
+
+        private void DataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            rowSelecionada = ((System.Data.DataRowView)this.dataGridView1.Rows[e.RowIndex].DataBoundItem).Row
+                as MVCProject.SistemaBibliotecaDBDataSet.GenerosRow;
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            frmEditarGeneros telaEditar = new frmEditarGeneros();
+            telaEditar.generosRow = rowSelecionada;
+            telaEditar.ShowDialog();
+            this.generosTableAdapter.Fill(this.sistemaBibliotecaDBDataSet.Generos);
+
 
         }
     }

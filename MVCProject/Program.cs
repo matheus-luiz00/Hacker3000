@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MVCProject.View;
 
 namespace MVCProject
 {
@@ -16,7 +17,7 @@ namespace MVCProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new frmPrincipal());
         }
     }
 }

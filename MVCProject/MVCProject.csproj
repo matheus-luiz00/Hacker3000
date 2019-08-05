@@ -46,6 +46,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Add\frmAddAutores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\frmAddAutores.Designer.cs">
+      <DependentUpon>frmAddAutores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\frmAddEditoras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\frmAddEditoras.Designer.cs">
+      <DependentUpon>frmAddEditoras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\frmAddGenero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\frmAddGenero.Designer.cs">
+      <DependentUpon>frmAddGenero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\frmAddLivro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\frmAddLivro.Designer.cs">
+      <DependentUpon>frmAddLivro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\frmAddLivroAutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\frmAddLivroAutor.Designer.cs">
+      <DependentUpon>frmAddLivroAutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\frmAddLocacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\frmAddLocacao.Designer.cs">
+      <DependentUpon>frmAddLocacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add\frmAddUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add\frmAddUsuarios.Designer.cs">
+      <DependentUpon>frmAddUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Edit\frmEditarAutores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +199,48 @@
     <Compile Include="View\frmUsuarios.Designer.cs">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Add\frmAddAutores.resx">
+      <DependentUpon>frmAddAutores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\frmAddEditoras.resx">
+      <DependentUpon>frmAddEditoras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\frmAddGenero.resx">
+      <DependentUpon>frmAddGenero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\frmAddLivro.resx">
+      <DependentUpon>frmAddLivro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\frmAddLivroAutor.resx">
+      <DependentUpon>frmAddLivroAutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\frmAddLocacao.resx">
+      <DependentUpon>frmAddLocacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add\frmAddUsuarios.resx">
+      <DependentUpon>frmAddUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit\frmEditarAutores.resx">
+      <DependentUpon>frmEditarAutores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit\frmEditarEditoras.resx">
+      <DependentUpon>frmEditarEditoras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit\frmEditarGeneros.resx">
+      <DependentUpon>frmEditarGeneros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit\frmEditarLivroAutor.resx">
+      <DependentUpon>frmEditarLivroAutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit\frmEditarLivros.resx">
+      <DependentUpon>frmEditarLivros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit\frmEditarLocacao.resx">
+      <DependentUpon>frmEditarLocacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit\frmEditarUsuarios.resx">
+      <DependentUpon>frmEditarUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -168,6 +252,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="View\frmAutores.resx">
       <DependentUpon>frmAutores.cs</DependentUpon>
@@ -216,6 +301,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

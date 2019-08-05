@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MVCProject.Add;
+using MVCProject.Edit;
 
 namespace MVCProject.View
 {
@@ -22,6 +24,35 @@ namespace MVCProject.View
             // TODO: This line of code loads data into the 'sistemaBibliotecaDBDataSet.Editoras' table. You can move, or remove it, as needed.
             this.editorasTableAdapter.Fill(this.sistemaBibliotecaDBDataSet.Editoras);
 
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            frmAddEditoras frmAdd = new frmAddEditoras();
+            frmAdd.ShowDialog();
+        }
+
+        MVCProject.SistemaBibliotecaDBDataSet.EditorasRow colunaSelecionada;
+
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            colunaSelecionada = ((System.Data.DataRowView)this.dataGridView1.Rows[e.RowIndex].DataBoundItem).Row
+                as MVCProject.SistemaBibliotecaDBDataSet.EditorasRow;
+
+           
+        }
+
+        private void DataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            colunaSelecionada = ((System.Data.DataRowView)this.dataGridView1.Rows[e.RowIndex].DataBoundItem).Row
+                as MVCProject.SistemaBibliotecaDBDataSet.EditorasRow;
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            frmEditarEditoras editar = new frmEditarEditoras();
+            editar.edicao = colunaSelecionada;
+            editar.ShowDialog();
         }
     }
 }
