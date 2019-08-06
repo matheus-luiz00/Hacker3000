@@ -19,11 +19,10 @@ namespace MVCProject.View
             InitializeComponent();
         }
 
+        public MVCProject.SistemaBibliotecaDBDataSet.LivrosRow livrosRow;
         private void FrmLivroAutor_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'sistemaBibliotecaDBDataSet.DataTable1' table. You can move, or remove it, as needed.
-            this.dataTable1TableAdapter.Fill(this.sistemaBibliotecaDBDataSet.DataTable1);
-
+            livroAutorTableAdapter.FillBy(this.sistemaBibliotecaDBDataSet.LivroAutor, livrosRow.Id);
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -44,12 +43,17 @@ namespace MVCProject.View
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            frmEditarLivroAutor telaEditar = new frmEditarLivroAutor();
-            telaEditar.livroautorRow = rowSelecionada;
-            telaEditar.ShowDialog();
-            this.dataTable1TableAdapter.Fill(this.sistemaBibliotecaDBDataSet.DataTable1);
 
+            if (rowSelecionada != null)
+            {
+                frmEditarLivroAutor telaEditar = new frmEditarLivroAutor();
+                telaEditar.livroautorRow = rowSelecionada;
+                telaEditar.ShowDialog();
+                this.dataTable1TableAdapter.Fill(this.sistemaBibliotecaDBDataSet.DataTable1);
+            } else
+                MessageBox.Show("Selecione um registro para alterar");
 
         }
+
     }
 }

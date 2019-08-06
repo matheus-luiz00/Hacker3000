@@ -31,5 +31,13 @@ namespace MVCProject.Add
 
             this.Close();
         }
+
+        private void FrmAddLivroAutor_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'sistemaBibliotecaDBDataSet.Autores' table. You can move, or remove it, as needed.
+            this.livrosTableAdapter1.Fill(this.sistemaBibliotecaDBDataSet.Livros);
+            this.autoresTableAdapter.Fill(this.sistemaBibliotecaDBDataSet.Autores);
+
+        }
     }
 }

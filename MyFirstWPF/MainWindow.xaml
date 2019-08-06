@@ -1,0 +1,25 @@
+﻿<Window x:Class="MyFirstWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyFirstWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="BOTÃO" HorizontalAlignment="Left" Margin="301,187,0,0" VerticalAlignment="Top" Width="203" Height="80" BorderThickness="5" Opacity="{DynamicResource {x:Static SystemParameters.FocusBorderHeightKey}}">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="30" ShadowDepth="3" Direction="237"/>
+            </Button.Effect>
+            <Button.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFC2FFA1"/>
+                    <GradientStop Color="#FFABFF00" Offset="1"/>
+                    <GradientStop Color="#FFB6FF52" Offset="0.672"/>
+                    <GradientStop Color="{DynamicResource {x:Static SystemColors.MenuBarColorKey}}" Offset="0.389"/>
+                </RadialGradientBrush>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>
