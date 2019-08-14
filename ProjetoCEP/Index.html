@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Consultor de CEP</title>
+    <link href="Content/bootstrap-grid.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <img src="http://www.beasttrail.taiwanbeastrunners.com/wp-content/uploads/2017/01/Map-icon-Mister-Pixel-Noun-Project.png" height="100" class="row" />
+    <input id="cepdig" type="text" />
+    <input id="pesquisar" type="button" value="Pesquisar" />
+
+    <input id="rua" type="text" />
+    <input id="num" type="text" />
+    <input id="complemento" type="text" />
+    <input id="bairro" type="text" />
+    <input id="cidade" type="text" />
+    <input id="uf" type="text" />
+
+    <script src="Scripts/bootstrap.bundle.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $("#pesquisar").click(function () {
+                $.getJSON("https://viacep.com.br/ws/" + cepdig.value + "/json/", function (data, status) {
+                    
+
+                    $("#rua").val(data.logradouro);
+                    $("#complemento").val(data.complemento);
+                    $("#bairro").val(data.bairro);
+                    $("#cidade").val(data.localidade);
+                    $("#uf").val(data.uf);
+
+                });
+            });
+        });
+    </script>
+</body>
+</html>
