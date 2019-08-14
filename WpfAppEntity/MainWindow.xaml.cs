@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAppEntity.Views;
 
-namespace CalculadoraWPF
+namespace WpfAppEntity
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,9 +26,17 @@ namespace CalculadoraWPF
             InitializeComponent();
         }
 
-        private void LoginForm_loginCorrect(object sender, EventArgs e)
+        private void UcLogin_success(object sender, EventArgs e)
         {
-            calcularForm.Visibility = Visibility.Visible;
+            MessageBox.Show(sender.ToString());
+            ucLoginForm.Visibility = Visibility.Hidden;
+            ucGridView.Visibility = Visibility.Visible;
+        }
+
+        private void UcLogin_fail(object sender, EventArgs e)
+        {
+            MessageBox.Show(sender.ToString());
+            
         }
     }
 }

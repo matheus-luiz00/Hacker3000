@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFPassoGigante.Data;
 
-namespace CalculadoraWPF
+namespace WPFPassoGigante
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,9 +26,24 @@ namespace CalculadoraWPF
             InitializeComponent();
         }
 
-        private void LoginForm_loginCorrect(object sender, EventArgs e)
+        public Model1 context;
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            calcularForm.Visibility = Visibility.Visible;
+            MessageBox.Show(context.Usuarios
+                .OrderBy(x => x.Nome).
+                FirstOrDefault(x => x.Id > 0).Nome);
+
+
+            var runList = context.Usuarios
+                .OrderBy(x => x.Nome).ToList<Usuario>();
+
+            gridView1.ItemsSource = runList;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            context = new Model1();
         }
     }
 }

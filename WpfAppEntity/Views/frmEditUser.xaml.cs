@@ -12,22 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAppEntity.Data;
 
-namespace CalculadoraWPF
+namespace WpfAppEntity.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for frmEditUser.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class frmEditUser : UserControl
     {
-        public MainWindow()
+        public frmEditUser()
         {
             InitializeComponent();
         }
+        public Usuario user;
 
-        private void LoginForm_loginCorrect(object sender, EventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            calcularForm.Visibility = Visibility.Visible;
+            user.Nome = tbxName.Text;
+            user.Login = tbxLogin.Text;
+            user.Senha = tbxSenha.Text;
+            
         }
     }
 }

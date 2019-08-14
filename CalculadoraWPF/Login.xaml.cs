@@ -16,18 +16,22 @@ using System.Windows.Shapes;
 namespace CalculadoraWPF
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Login : UserControl
     {
-        public MainWindow()
+        public Login()
         {
             InitializeComponent();
         }
-
-        private void LoginForm_loginCorrect(object sender, EventArgs e)
+        public event EventHandler loginCorrect;
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            calcularForm.Visibility = Visibility.Visible;
+            if(txtLogin.Text == "admin" && txtSenha.Text == "admin")
+            {
+                this.Visibility = Visibility.Hidden;
+                loginCorrect(null, new EventArgs());
+            }
         }
     }
 }

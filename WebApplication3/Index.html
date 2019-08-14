@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Content/bootstrap-grid.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'FonteBotao';
+            src: url("https://fonts.googleapis.com/css?family=Work+Sans") format("truetype");
+        }
+        .field-custom {
+            text-align:center;
+            padding: 5px;
+        }
+        .buttonPersonalizado {
+            background-color: #CC2100;
+            color: white;
+            font-family: 'Livvic', sans-serif;
+            border: 0px;
+            box-shadow: inset 0px 0px 29px -1px rgba(0,0,0,0.2);
+        }
+        .buttonPersonalizado:hover {
+            background-color: #CC3B1D;
+        }
+        .txtBox {
+            width:100%;
+            min-height:300px;
+            background-color:rgba(1,1,1,0.3);
+            color:white;
+
+        }
+        .txtBox::-webkit-scrollbar {
+            width: 8px;
+        }
+        .txtBox::-webkit-scrollbar-thumb {
+            border-radius: 6px;
+	        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	        background-color: white;
+        }
+        .right {
+            text-align: right;
+        }
+        .left {
+            text-align:left;
+        }
+    </style>
+</head>
+<body style="background-color:#3D5A99; box-shadow: inset 0px 23px 50px -16px #000000; ">
+    <!-- http://httpbin.org/get -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12" style="background-color:#FF7C40;text-align:center;padding:5px;">
+                <input id="Button1" class="col-6 buttonPersonalizado" type="button" value="Pesquisar" />
+            </div>
+            <div class="col-sm-12" style="background-color:#FF7C40;text-align:center;padding:5px;">
+                <input id="Button2" class="col-6 buttonPersonalizado" type="button" value="Apagar" />
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 field-custom right">
+                <label for="Accept">Accept:</label>
+            </div>
+            <div class="col-md-6 field-custom  left">
+                <input type="text" id="Accept" placeholder="Content" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 field-custom right">
+                <label for="AcceptEnconding">Accept Encoding:</label>
+            </div>
+            <div class="col-md-6 field-custom left">
+                <input type="text" id="AcceptEncoding" placeholder="Content" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 field-custom right">
+                <label for="AcceptLanguage">Accept Language:</label>
+            </div>
+            <div class="col-md-6 field-custom left">
+                <input type="text" id="AcceptLanguage" placeholder="Content" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 field-custom right">
+                <label for="Host">Host:</label>
+            </div>
+            <div class="col-md-6 field-custom left">
+                <input type="text" id="Host" placeholder="Content" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 field-custom right">
+                <label for="txtUpgrade">Upgrade:</label>
+            </div>
+            <div class="col-md-6 field-custom left">
+                <input type="text" id="txtUpgrade" placeholder="Content" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 field-custom right">
+                <label for="UserAgt">User-Agent:</label>
+            </div>
+            <div class="col-md-6 field-custom left">
+                <input type="text" id="UserAgt" placeholder="Content" />
+            </div>
+        </div>
+
+        
+    </div>
+    <div id="blockbackground" style="background-color:rgba(0,0,0,0.8);position:absolute;width:100%;height:100%;top:0;left:0"></div>
+    <script src="Scripts/bootstrap.bundle.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/jquery-3.4.1.js"></script>
+    <script>
+        $('#blockbackground').hide();
+        $(function () {
+            $('#Button1').click(function () {
+                $('#blockbackground').show(0);
+                $.get('http://httpbin.org/get', function (data, textStatus, jqXHR) {
+                    //var textJson = JSON.stringify(data, undefined, 4);
+                    $('#blockbackground').hide();
+                    //$('#TextArea1').append(textJson);
+                    $('#Accept').val(data.headers.Accept);
+                    $('#AcceptEncoding').val(data.headers['Accept-Encoding']);
+                    $('#AcceptLanguage').val(data.headers['Accept-Language']);
+                    $('#Host').val(data.headers.Host);
+                    $('#txtUpgrade').val(data.headers['Upgrade-Insecure-Requests']);
+                    $('#UserAgt').val(data.headers['User-Agent']);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
