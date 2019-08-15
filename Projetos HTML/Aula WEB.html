@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>WEB</title>
+
+    <style>
+        .ButtomClass{
+            width: 100px;
+            height: 100px;
+        }
+
+        .Giomar{
+            width: 50px;
+            height: 50px;
+            background-color: #000;
+            border: 1px solid #808080;
+            border-radius: 100%;
+        }
+        .screen{
+            width: 500px;
+            height: 500px;
+        }
+
+        input{
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="screen">
+        <div class="Giomar"></div>
+    </div>
+    <div>
+        <input id="btnClickMe" class="ButtomClass" type="button" value="Click Me" onclick="CriarGiomar()"/>
+
+    </div>
+
+    <script>
+    function CriarGiomar() {
+        var elementDoc = document.getElementByClassName('screen')[0];
+        var elementLbl = document.getElementById('lblEsferar');
+            elementDoc.innerHTML += "<div class=\"Giomar\"></div>"
+    }
+    </script>
+
+</body>
+</html>
