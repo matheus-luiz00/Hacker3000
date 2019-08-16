@@ -8,7 +8,7 @@
 
 			 var settings = {
 			  "crossDomain": true,
-			  "url": "https://localhost:44317/Api/Usuarios",
+			  "url": "http://localhost:59271/Api/Usuarios",
 			  "method": "POST",
 			  "headers": {
 				"Content-Type": "application/x-www-form-urlencoded",
@@ -63,7 +63,7 @@
         var settings = {
 			"async": true,
 			"crossDomain": true,
-			"url": "https://localhost:44317/Api/Usuarios/"+id,
+			"url": "http://localhost:59271/Api/Usuarios/"+id,
 			"method": "GET",
 				"headers": {
 					"Content-Type": "application/json",
@@ -88,7 +88,7 @@
 
 		 var settings = {
 		  "crossDomain": true,
-		  "url": "https://localhost:44317/Api/Usuarios/"+id,
+		  "url": "http://localhost:59271/Api/Usuarios/"+id,
 		  "method": "PUT",
 		  "headers": {
 			"Content-Type": "application/x-www-form-urlencoded",
@@ -105,7 +105,7 @@
 	function Deleting(id){
 			 var settings = {
 			  "crossDomain": true,
-			  "url": "https://localhost:44317/Api/Usuarios/"+id,
+			  "url": "http://localhost:59271/Api/Usuarios/"+id,
 			  "method": "DELETE",
 			  "headers": {
 				"Content-Type": "application/x-www-form-urlencoded",
@@ -122,7 +122,7 @@
 			var settings = {
 				"async": true,
 				"crossDomain": true,
-				"url": "https://localhost:44317/Api/Usuarios",
+				"url": "http://localhost:59271/Api/Usuarios",
 				"method": "GET",
 				"headers": {
 					"Content-Type": "application/json",
