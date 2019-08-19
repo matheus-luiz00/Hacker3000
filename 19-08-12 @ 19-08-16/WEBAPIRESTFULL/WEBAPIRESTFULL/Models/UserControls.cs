@@ -9,9 +9,9 @@ namespace WEBAPIRESTFULL.Models
     {
         public bool? Ativo { get; set; } = true;
 
-        public int? UsuInc { get; set; } = 0;
+        public int? UsuInc { get; set; } = 3010;
 
-        public int? UsuAlt { get; set; } = 0;
+        public int? UsuAlt { get; set; } = 3010;
 
         public DateTime? DatInc { get; set; } = DateTime.Now;
 

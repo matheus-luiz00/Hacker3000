@@ -1,5 +1,6 @@
 namespace WEBAPIRESTFULL.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -53,6 +54,8 @@ namespace WEBAPIRESTFULL.Models
         public virtual Usuarios Usuarios { get; set; }
 
         public virtual Usuarios Usuarios1 { get; set; }
+
+        [JsonIgnore]
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Locacao> Locacao { get; set; }
