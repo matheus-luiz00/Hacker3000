@@ -348,7 +348,7 @@
         </div>
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu" data-widget="tree">
+        <ul id="lateral" class="sidebar-menu" data-widget="tree">
           <li class="treeview">
             <a href="usuarios.html">
               <i class="fa   fa-cog"></i> <span>Usuários</span>
@@ -384,7 +384,7 @@
               <i class="fa   fa-cog"></i> <span>Livro-Autor</span>
             </a>
           </li>
-        </ul>
+      </ul>
       </section>
       <!-- /.sidebar -->
     </aside>
@@ -404,7 +404,7 @@
 	  
       <section class="content" style="margin-bottom:0px;padding-bottom:0px;min-height:0px;">
         <!-- Small boxes (Stat box) -->
-        <form  name="formusuarios" id="formusuarios"  class="box box-primary  collapsed-box" >
+        <form  name="formusuarios" id="formusuarios" call="GetMethod" send-post="Autores"  class="box box-primary  collapsed-box form-post" >
           <div class="box-header with-border">
             <h3 class="box-title">Autores</h3>
 			
@@ -703,8 +703,14 @@
 	  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 	  <script src="dist/js/pages/dashboard.js"></script>
 	  <!-- AdminLTE for demo purposes -->
-	  <script src="dist/js/demo.js"></script>
-	  <!-- Custom page script sections -->
+    <script src="dist/js/demo.js"></script>
+    <script> 
+      $(function(){
+        $("#lateral").load("sidebar.html");
+      });
+      </script> 
+    <!-- Custom page script sections -->
+    <script src="js/utils.js"></script>
 	  <script src="js/autores.js"></script>
   </scriptsection>
 </body>

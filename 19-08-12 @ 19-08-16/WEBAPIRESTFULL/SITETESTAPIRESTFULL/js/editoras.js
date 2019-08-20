@@ -1,26 +1,5 @@
 jQuery(document).ready(function(){
     /* Indica que o evento submit do form irá realizar esta ação agora*/
-    jQuery('#formusuarios').submit(function(){
-        /* Neste contesto 'this' representa o form deste ID  #myform */                
-        var dados = $(this).serialize();
-
-         var settings = {
-          "crossDomain": true,
-          "url": "http://localhost:59271/Api/Editoras",
-          "method": "POST",
-          "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Accept": "*/*"
-          },
-          "data": dados
-        }
-
-        $.ajax(settings).done(function (response) {
-            GetMethod();
-        });
-        
-        return false;
-    });
     
     jQuery('#bntSalvar').click(function(){
          Editing();
@@ -147,14 +126,15 @@ function RefreshGrid(contentValue){
                     + '<td>' 
                     + 	'<div    class=\'col-md-12\' style=\'float: right;\'>'
                     + 		'<div    class=\'col-md-6\'>'
-                    + 			'<button class=\'btn btn-block btn-danger col-md-3 ajax\' type=\'button\'  onclick=\'Deleting('+ value.Id +')\'>Remover</button>'
+                    + 			'<button class=\'btn btn-block btn-danger btn-delet-event col-md-3 \'  send-post=\'Editoras\' type=\'button\'  value=\''+ value.Id +'\'>Remover</button>'
                     + 		'</div>'
                     + 		'<div     class=\'col-md-6\'>'
-                    + 			'<button  class=\'btn btn-block btn-success col-md-3\'    type=\'button\'  onclick=\'GetByID('+ value.Id +')\'\>Editar</button>'
+                    + 			'<button  class=\'btn btn-block btn-success btn-editing-event col-md-3\'   send-post=\'Editoras\'   type=\'button\'  value=\''+ value.Id +'\'>Editar</button>'
                     + 		'</div>'
                     + 	'</div>'
                     + '</td>'
                 + '</tr>';
     $('#tDataGrid').append(row);
     });
+    SetGridClickEvents();
 }

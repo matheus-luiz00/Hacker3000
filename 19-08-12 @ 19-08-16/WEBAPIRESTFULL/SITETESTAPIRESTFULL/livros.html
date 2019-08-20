@@ -348,45 +348,40 @@
         </div>
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu" data-widget="tree">
+        <ul id="lateral" class="sidebar-menu" data-widget="tree">
           <li class="treeview">
             <a href="usuarios.html">
               <i class="fa   fa-cog"></i> <span>Usuários</span>
             </a>
           </li>
           <li class="treeview">
-            <a href="index.html">
-              <i class="fa   fa-cog"></i> <span>ADMINISTRAÇÃO</span>
+            <a href="autores.html">
+              <i class="fa   fa-cog"></i> <span>Autores</span>
             </a>
           </li>
           <li class="treeview">
-            <a href="index.html">
-              <i class="fa   fa-cog"></i> <span>ADMINISTRAÇÃO</span>
+            <a href="editoras.html">
+              <i class="fa   fa-cog"></i> <span>Editoras</span>
             </a>
           </li>
           <li class="treeview">
-            <a href="index.html">
-              <i class="fa   fa-cog"></i> <span>ADMINISTRAÇÃO</span>
+            <a href="generos.html">
+              <i class="fa   fa-cog"></i> <span>Gêneros</span>
             </a>
           </li>
           <li class="treeview">
-            <a href="index.html">
-              <i class="fa   fa-cog"></i> <span>ADMINISTRAÇÃO</span>
+            <a href="livros.html">
+              <i class="fa   fa-cog"></i> <span>Livros</span>
             </a>
           </li>
           <li class="treeview">
-            <a href="index.html">
-              <i class="fa   fa-cog"></i> <span>ADMINISTRAÇÃO</span>
+            <a href="locacao.html">
+              <i class="fa   fa-cog"></i> <span>Locação</span>
             </a>
           </li>
           <li class="treeview">
-            <a href="index.html">
-              <i class="fa   fa-cog"></i> <span>ADMINISTRAÇÃO</span>
-            </a>
-          </li>
-          <li class="treeview">
-            <a href="index.html">
-              <i class="fa   fa-cog"></i> <span>ADMINISTRAÇÃO</span>
+            <a href="livroautor.html">
+              <i class="fa   fa-cog"></i> <span>Livro-Autor</span>
             </a>
           </li>
         </ul>
@@ -406,110 +401,118 @@
           <li class="active">Livros</li>
         </ol>
       </section>
-	  
+
       <section class="content" style="margin-bottom:0px;padding-bottom:0px;min-height:0px;">
         <!-- Small boxes (Stat box) -->
-        <form  name="formusuarios" id="formusuarios"  class="box box-primary  collapsed-box" >
+        <form name="formusuarios" id="formusuarios" class="box box-primary  collapsed-box form-post" call="GetMethod" send-post="Livros">
           <div class="box-header with-border">
             <h3 class="box-title">Livros</h3>
-			
-			<div class="box-tools pull-right">
-				<button type="button" class="btn btn-block btn-primary" data-widget="collapse"><i class="fa fa-plus"></i></button>
-			</div>
+
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-block btn-primary" data-widget="collapse"><i
+                  class="fa fa-plus"></i></button>
+            </div>
           </div>
           <!-- hidden field -->
-		  <input type="hidden" class="form-control" id="Id" name="Id" />
+          <input type="hidden" class="form-control" id="Id" name="Id" />
           <!-- form start -->
           <div class="box-body">
             <div class="col-md-6">
               <div class="form-group">
                 <label for="Titulo">Título</label>
-                <input type="text" class="form-control" id="Titulo" name="Titulo" placeholder="Título do livro"/>
+                <input type="text" class="form-control" id="Titulo" name="Titulo" placeholder="Título do livro" />
               </div>
               <div class="form-group">
-                    <label for="Genero">Gênero</label>
-                    <input type="text" class="form-control" name="Genero" id="Genero" placeholder="Gênero"/>
-                 </div>
+                <label>Gênero</label>
+                <select name="Genero" id="Genero" class="form-control select2" style="width: 100%;">
+                  
+                </select>
+              </div>
               <div class="form-group">
-                  <label for="ISBN">ISBN</label>
-                  <input type="text" class="form-control" name="ISBN" id="ISBN" placeholder="ISBN"/>
-               </div>
-            <div class="form-group">
-              <label>Ativo</label>
-              <select name="Ativo" id="Ativo" class="form-control select2" style="width: 100%;">
-                <option value="true" selected="selected">Ativo</option>
-                <option value="false">Inativo</option>
-              </select>
-            </div>
+                <label for="Isbn">ISBN</label>
+                <input type="text" class="form-control" name="Isbn" id="Isbn" placeholder="ISBN" />
+              </div>
+              <div class="form-group">
+                <label>Ativo</label>
+                <select name="Ativo" id="Ativo" class="form-control select2" style="width: 100%;">
+                  <option value="true" selected="selected">Ativo</option>
+                  <option value="false">Inativo</option>
+                </select>
+              </div>
 
 
             </div>
             <div class="col-md-6">
-			  <div class="form-group">
+              <div class="form-group">
                 <label for="Registro">Registro</label>
-                <input type="Text" class="form-control" name="Registro" id="Registro" placeholder="Número do Registro"/>
+                <input type="Text" class="form-control" name="Registro" id="Registro"
+                  placeholder="Número do Registro" />
               </div>
               <div class="form-group">
-                <label for="Editora">Editora</label>
-                <input type="text" class="form-control" name="Editora" id="Editora" placeholder="Editora"/>
+                <label>Editora</label>
+                <select name="Editora" id="Editora" class="form-control select2" style="width: 100%;">
+                  
+                </select>
               </div>
               <div class="form-group">
-                    <label for="Sinopse">Sinopse</label>
-                    <input type="text" class="form-control" name="Sinopse" id="Sinopse" placeholder="Sinopse"/>
-                  </div>
-                  <div class="form-group">
-                        <label for="Observavoes">Observações</label>
-                        <input type="text" class="form-control" name="Observacoes" id="Observacoes" placeholder="Observações"/>
-                      </div>
+                <label for="Sinopse">Sinopse</label>
+                <input type="text" class="form-control" name="Sinopse" id="Sinopse" placeholder="Sinopse" />
+              </div>
+              <div class="form-group">
+                <label for="Observacoes">Observações</label>
+                <input type="text" class="form-control" name="Observacoes" id="Observacoes" placeholder="Observações" />
+              </div>
             </div>
             <!-- /.box-body -->
 
             <div class="box-footer">
               <button type="submit" id="bntSubmit" class="btn btn-primary">Finalizar cadastro</button>
-			  <button type="button" id="bntSalvar" class="btn btn-primary" style="display:none;">Salvar cadastro</button>
-			  <button type="button" id="bntCancelar" class="btn btn-primary" style="display:none;">Cancelar cadastro</button>
+              <button type="button" id="bntSalvar" class="btn btn-primary" style="display:none;">Salvar
+                cadastro</button>
+              <button type="button" id="bntCancelar" class="btn btn-primary" style="display:none;">Cancelar
+                cadastro</button>
             </div>
           </div>
         </form>
 
       </section>
 
-	  
-	<section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Livros</h3>
 
-              <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar">
+      <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">Livros</h3>
 
-                  <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                <div class="box-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar">
+
+                    <div class="input-group-btn">
+                      <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div  class="easyui-datagrid box-body table-responsive no-padding">
-              <table id="tDataGrid" class="table table-hover">
-                <tr>
-                  <th data-options="field:'Id',width:100">ID</th>
-                  <th>Registro</th>
-				  <th>Título</th>
-                  <th>ISBN</th>
-				  <th>Gênero</th>
-                  <th>Editora</th>
-                  <th>Sinopse</th>
-                  <th>Observações</th>
-                </tr>
-              </table>
+              <div class="easyui-datagrid box-body table-responsive no-padding">
+                <table id="tDataGrid" class="table table-hover">
+                  <tr>
+                    <th data-options="field:'Id',width:100">ID</th>
+                    <th>Registro</th>
+                    <th>Título</th>
+                    <th>ISBN</th>
+                    <th>Gênero</th>
+                    <th>Editora</th>
+                    <th>Sinopse</th>
+                    <th>Observações</th>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
@@ -710,40 +713,41 @@
   </div>
   <!-- ./wrapper -->
   <scriptsection>
-	  <!-- jQuery 3 -->
-	  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-	  <!-- jQuery UI 1.11.4 -->
-	  <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
-	  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-	  <script>$.widget.bridge('uibutton', $.ui.button);</script>
-	  <!-- Bootstrap 3.3.7 -->
-	  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-	  <!-- Sparkline -->
-	  <script src="bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-	  <!-- jvectormap -->
-	  <script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-	  <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-	  <!-- jQuery Knob Chart -->
-	  <script src="bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
-	  <!-- daterangepicker -->
-	  <script src="bower_components/moment/min/moment.min.js"></script>
-	  <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-	  <!-- datepicker -->
-	  <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-	  <!-- Bootstrap WYSIHTML5 -->
-	  <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-	  <!-- Slimscroll -->
-	  <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	  <!-- FastClick -->
-	  <script src="bower_components/fastclick/lib/fastclick.js"></script>
-	  <!-- AdminLTE App -->
-	  <script src="dist/js/adminlte.min.js"></script>
-	  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-	  <script src="dist/js/pages/dashboard.js"></script>
-	  <!-- AdminLTE for demo purposes -->
-	  <script src="dist/js/demo.js"></script>
-	  <!-- Custom page script sections -->
-	  <script src="js/livros.js"></script>
+    <!-- jQuery 3 -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>$.widget.bridge('uibutton', $.ui.button);</script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Sparkline -->
+    <script src="bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- jvectormap -->
+    <script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- datepicker -->
+    <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- Slimscroll -->
+    <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="dist/js/pages/dashboard.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="dist/js/demo.js"></script>
+    <!-- Custom page script sections -->
+    <script src="js/utils.js"></script>
+    <script src="js/livros.js"></script>
   </scriptsection>
 </body>
 

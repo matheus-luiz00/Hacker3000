@@ -348,7 +348,7 @@
         </div>
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu" data-widget="tree">
+        <ul id="lateral" class="sidebar-menu" data-widget="tree">
           <li class="treeview">
             <a href="usuarios.html">
               <i class="fa   fa-cog"></i> <span>Usuários</span>
@@ -360,36 +360,31 @@
             </a>
           </li>
           <li class="treeview">
-            <a href="index.html">
-              <i class="fa   fa-cog"></i> <span>ADMINISTRAÇÃO</span>
+            <a href="editoras.html">
+              <i class="fa   fa-cog"></i> <span>Editoras</span>
             </a>
           </li>
           <li class="treeview">
-            <a href="index.html">
-              <i class="fa   fa-cog"></i> <span>ADMINISTRAÇÃO</span>
+            <a href="generos.html">
+              <i class="fa   fa-cog"></i> <span>Gêneros</span>
             </a>
           </li>
           <li class="treeview">
-            <a href="index.html">
-              <i class="fa   fa-cog"></i> <span>ADMINISTRAÇÃO</span>
+            <a href="livros.html">
+              <i class="fa   fa-cog"></i> <span>Livros</span>
             </a>
           </li>
           <li class="treeview">
-            <a href="index.html">
-              <i class="fa   fa-cog"></i> <span>ADMINISTRAÇÃO</span>
+            <a href="locacao.html">
+              <i class="fa   fa-cog"></i> <span>Locação</span>
             </a>
           </li>
           <li class="treeview">
-            <a href="index.html">
-              <i class="fa   fa-cog"></i> <span>ADMINISTRAÇÃO</span>
+            <a href="livroautor.html">
+              <i class="fa   fa-cog"></i> <span>Livro-Autor</span>
             </a>
           </li>
-          <li class="treeview">
-            <a href="index.html">
-              <i class="fa   fa-cog"></i> <span>ADMINISTRAÇÃO</span>
-            </a>
-          </li>
-        </ul>
+      </ul>
       </section>
       <!-- /.sidebar -->
     </aside>
@@ -409,7 +404,7 @@
 	  
       <section class="content" style="margin-bottom:0px;padding-bottom:0px;min-height:0px;">
         <!-- Small boxes (Stat box) -->
-        <form  name="formusuarios" id="formusuarios"  class="box box-primary  collapsed-box" >
+        <form  name="formusuarios" id="formusuarios" call="GetMethod" send-post="Editoras"  class="box box-primary  collapsed-box form-post" >
           <div class="box-header with-border">
             <h3 class="box-title">Editoras</h3>
 			
@@ -709,7 +704,8 @@
 	  <script src="dist/js/pages/dashboard.js"></script>
 	  <!-- AdminLTE for demo purposes -->
 	  <script src="dist/js/demo.js"></script>
-	  <!-- Custom page script sections -->
+    <!-- Custom page script sections -->
+    <script src="js/utils.js"></script>
 	  <script src="js/editoras.js"></script>
   </scriptsection>
 </body>

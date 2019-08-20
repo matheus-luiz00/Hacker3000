@@ -1,31 +1,8 @@
 
     /* Ao carregar o documento o mesmo inicia o conteudo desde script*/
     jQuery(document).ready(function(){
-
-        
-		/* Indica que o evento submit do form irá realizar esta ação agora*/
-		jQuery('#formusuarios').submit(function(){
-			/* Neste contesto 'this' representa o form deste ID  #myform */                
-			var dados = $(this).serialize();
-
-			 var settings = {
-			  "crossDomain": true,
-			  "url": "http://localhost:59271/Api/Livros",
-			  "method": "POST",
-			  "headers": {
-				"Content-Type": "application/x-www-form-urlencoded",
-				"Accept": "*/*"
-			  },
-			  "data": dados
-			}
-
-			$.ajax(settings).done(function (response) {
-			    GetMethod();
-			});
-			
-			return false;
-		});
-		
+		CarregarGeneros();
+		CarregarEditoras();
 		jQuery('#bntSalvar').click(function(){
 			 Editing();
 			 
@@ -36,7 +13,7 @@
 			$('#Id').val("");
 			$('#Registro').val("");
 			$('#Titulo').val("");
-			$('#ISBN').val("");
+			$('#Isbn').val("");
 			$('#Genero').val("");
             $('#Ativo select').val("true");
             $('#Sinopse').val("");
@@ -51,7 +28,7 @@
 			$('#Id').val("");
 			$('#Registro').val("");
 			$('#Titulo').val("");
-			$('#ISBN').val("");
+			$('#Isbn').val("");
 			$('#Genero').val("");
             $('#Ativo select').val("true");
             $('#Sinopse').val("");
@@ -173,18 +150,84 @@
 						+ '<td>' 
 						+ 	'<div    class=\'col-md-12\' style=\'float: right;\'>'
 						+ 		'<div    class=\'col-md-6\'>'
-						+ 			'<button class=\'btn btn-block btn-danger col-md-3 ajax\' type=\'button\'  onclick=\'Deleting('+ value.Id +')\'>Remover</button>'
+						+ 			'<button class=\'btn btn-block btn-danger col-md-3 btn-delet-event\' send-post=\'Livros\'  type=\'button\'  value=\''+ value.Id +'\'>Remover</button>'
 						+ 		'</div>'
 						+ 		'<div     class=\'col-md-6\'>'
-						+ 			'<button  class=\'btn btn-block btn-success col-md-3\'    type=\'button\'  onclick=\'GetByID('+ value.Id +')\'\>Editar</button>'
+						+ 			'<button  class=\'btn btn-block btn-success btn-editar col-md-3\' send-post=\'Livros\'   type=\'button\'  value=\''+ value.Id +'\'>Editar</button>'
 						+ 		'</div>'
 						+ 	'</div>'
 						+ '</td>'
 					+ '</tr>';
         $('#tDataGrid').append(row);
 		});
+		SetGridClickEvents();
+		$('.btn-editar').click(function (){
+
+			var id = $(this).attr('value');
+			var settings = {
+				"async": true,
+				"crossDomain": true,
+				"url": "http://localhost:59271/Api/Livros/"+id,
+				"method": "GET",
+					"headers": {
+						"Content-Type": "application/json",
+						"Accept": "*/*"
+					}
+				}
+		
+				$.ajax(settings).done(function (response) {
+					$('#Titulo').val(response.Titulo);
+					$('#Id').val(response.Id);
+					$('#Isbn').val(response.Isbn);
+					$('#Genero').val(response.Genero);
+					$('#Ativo select').val(response.Ativo);
+					$('#Editora').val(response.Editora);
+					$('#Registro').val(response.Registro);
+					$('#Sinopse').val(response.Sinopse);
+					$('#Observacoes').val(response.Observacoes);
+				});
+			
+		});
     }
 	
+	function CarregarGeneros() {
+        var settings = {
+				"async": true,
+				"crossDomain": true,
+				"url": "http://localhost:59271/Api/Generos",
+				"method": "GET",
+				"headers": {
+					"Content-Type": "application/json",
+					"Accept": "*/*"
+				  }
+                }
+                
+				$.ajax(settings).done(function (response) {
+                    $.each(response,function(index,value) {
+                        var genero = '<option value="' + value.Id + '">'+ value.Tipo +'</option> ';
+                        $('#Genero').append(genero);
+                        });
+				});
+	}
 	
+	function CarregarEditoras() {
+        var settings = {
+				"async": true,
+				"crossDomain": true,
+				"url": "http://localhost:59271/Api/Editoras",
+				"method": "GET",
+				"headers": {
+					"Content-Type": "application/json",
+					"Accept": "*/*"
+				  }
+                }
+                
+				$.ajax(settings).done(function (response) {
+                    $.each(response,function(index,value) {
+                        var editora = '<option value="' + value.Id + '">'+ value.Nome +'</option> ';
+                        $('#Editora').append(editora);
+                        });
+				});
+    }
   
   
