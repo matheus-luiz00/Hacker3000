@@ -1,3 +1,6 @@
+var editorasList;
+var generosList;
+
 
     /* Ao carregar o documento o mesmo inicia o conteudo desde script*/
     jQuery(document).ready(function(){
@@ -38,6 +41,17 @@
 		GetMethod();
 	});
 	
+	function translateField(idTrad, lista, campoRetorno) {
+		var retorno;
+
+		$.each(lista, function(index, value){
+			if(value.Id == idTrad)
+			retorno = value[campoRetorno];
+		});
+
+		return retorno;
+	}
+
 	function GetByID(id){
         $('#bntSubmit').hide();
 		$('#bntSalvar').show();
@@ -143,8 +157,8 @@
 						+ '<td>' + value.Registro    + '</td>'
 						+ '<td>' + value.Titulo    + '</td>'
 						+ '<td>' + value.Isbn    + '</td>'
-                        + '<td>' + value.Genero    + '</td>'
-                        + '<td>' + value.Editora    + '</td>'
+                        + '<td>' + translateField(value.Genero,generosList,'Tipo')    + '</td>'
+                        + '<td>' + translateField(value.Editora,editorasList,'Nome')    + '</td>'
                         + '<td>' + value.Sinopse    + '</td>'
                         + '<td>' + value.Observacoes    + '</td>'
 						+ '<td>' 
@@ -203,7 +217,11 @@
                 }
                 
 				$.ajax(settings).done(function (response) {
+					generosList = response;
+
+
                     $.each(response,function(index,value) {
+
                         var genero = '<option value="' + value.Id + '">'+ value.Tipo +'</option> ';
                         $('#Genero').append(genero);
                         });
@@ -223,6 +241,8 @@
                 }
                 
 				$.ajax(settings).done(function (response) {
+					editorasList = response;
+
                     $.each(response,function(index,value) {
                         var editora = '<option value="' + value.Id + '">'+ value.Nome +'</option> ';
                         $('#Editora').append(editora);

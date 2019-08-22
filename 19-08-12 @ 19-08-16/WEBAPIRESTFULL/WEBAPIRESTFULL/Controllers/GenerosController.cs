@@ -22,7 +22,7 @@ namespace WEBAPIRESTFULL.Controllers
         // GET: api/Generos
         public IQueryable<Generos> GetGeneros()
         {
-            return db.Generos;
+            return db.Generos.Where(x => x.Ativo == true);
         }
 
         // GET: api/Generos/5

@@ -22,7 +22,7 @@ namespace WEBAPIRESTFULL.Controllers
         // GET: api/Locacaos
         public IQueryable<Locacao> GetLocacao()
         {
-            return db.Locacao;
+            return db.Locacao.Where(x => x.Ativo == true);
         }
 
         // GET: api/Locacaos/5

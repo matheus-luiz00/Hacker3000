@@ -22,7 +22,7 @@ namespace WEBAPIRESTFULL.Controllers
         // GET: api/Livros
         public IQueryable<Livros> GetLivros()
         {
-            return db.Livros;
+            return db.Livros.Where(x => x.Ativo == true);
         }
 
         // GET: api/Livros/5
